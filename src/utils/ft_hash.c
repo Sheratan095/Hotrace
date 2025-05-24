@@ -15,27 +15,33 @@
 
 char *hash_lookup(t_data *data, char *key)
 {
-	uint32_t	target_hashed_key;
-	t_entry		*entry = NULL;
+	t_entry		target_entry;
+	t_entry		*found_entry;
 	int			index;
 
 	if (!data || !key || data->first_entry == false )
 		return (NULL);
-	entry = malloc(sizeof(t_entry));
-	if (!entry)
-		return (error_print(MALLOC_ERROR, NULL), NULL);
-	entry->key = key;
-	index = get_index(entry);
-	target_hashed_key = entry->hashed_key;
-	if (data->entries[index]->next  == NULL)
-		return (data->entries[index]->value);
+
+	// entry = malloc(sizeof(t_entry));
+	// if (!entry)
+		// return (error_print(MALLOC_ERROR, NULL), NULL);
+	target_entry.key = key;
+	index = get_index(&target_entry);
+
+	found_entry = data->entries[index];
+
+	if (found_entry == NULL)
+		return (NULL);
+
+	if (found_entry->next  == NULL)
+		return (found_entry->value);
+
 	// horizontal collision
-	entry = data->entries[index];
-	while (entry != NULL)
+	while (found_entry != NULL)
 	{
-		if (entry->hashed_key == target_hashed_key)
-			return (entry->value);
-		entry = entry->next;
+		if (found_entry->hashed_key == target_entry.hashed_key)
+			return (found_entry->value);
+		found_entry = found_entry->next;
 	}
 	return (NULL);
 }

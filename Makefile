@@ -19,7 +19,7 @@ SRC = src/main.c \
 		src/search.c \
 		src/print_msg.c
 
-FLAGS	= -g -O3
+FLAGS	= -g
 FLAGS	+= -Wall -Werror -Wextra
 
 #__asm__
