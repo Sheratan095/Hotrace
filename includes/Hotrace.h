@@ -85,7 +85,9 @@ int			get_index(t_entry *entry);
 
 char		*hash_lookup(t_data *data, char *key);
 
-uint32_t 	MurmurHash2 ( const void * key, int len, uint32_t seed );
+uint32_t	MurmurHash2 ( const void * key, int len, uint32_t seed );
+
+void		clean_up(t_data *data);
 
 
 //------------------ UTILS ----------------
