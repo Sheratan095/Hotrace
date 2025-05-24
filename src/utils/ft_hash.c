@@ -12,6 +12,18 @@
 
 #include "../../includes/Hotrace.h"
 
+// hash a gruppi di 4 byte, ogni 4 byte viene moltiplicato per un numero 'magico'
+
+
+// prende una entry e la inserisce nell'array entries
+void get_index(t_data *data, t_entry *entry)
+{
+	uint32_t hash;
+	hash = MurmurHash2(entry->key, ft_strlen(entry->key), 0);
+}
+
+
+
 uint32_t MurmurHash2 ( const void * key, int len, uint32_t seed )
 {
   const uint32_t m = 0x5bd1e995;
