@@ -1,4 +1,4 @@
-#include "../includes/Hotrace.h"
+#include "Hotrace.h"
 
 void	error_print(int error, char *keyword)
 {

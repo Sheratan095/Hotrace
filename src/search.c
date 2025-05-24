@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Hotrace.h"
+#include "Hotrace.h"
 #include <stdio.h>
 
 int	searcher(t_data *data)

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Hotrace.h"
+#include "Hotrace.h"
 
 static void	parse_line(t_data *data, char *line, char *key, t_bool_val *even);
 
