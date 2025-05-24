@@ -27,7 +27,7 @@
 # include "get_next_line_bonus.h"
 
 // 2^18 entries - good balance between size and performance
-# define MAX_ENTRIES 1000000
+# define MAX_ENTRIES 500009 
 
 typedef enum e_bool
 {
@@ -43,9 +43,10 @@ typedef enum e_mode
 
 typedef struct s_entry
 {
-	char	*hashed_key;
-	char	*key;
-	char	*value;
+	char			*hashed_key;
+	char			*key;
+	char			*value;
+	struct	s_entry	*next;
 }	t_entry;
 
 typedef struct s_data
@@ -58,15 +59,15 @@ typedef struct s_data
 
 t_data		init_data(void);
 
-t_entry		*create_entry(char *key, int value);
+void		add_entry(t_data *data, char *key, int value);
 
 //------------------ UTILS ----------------
 
 
-char	*ft_strchr(const char *str, int c);
+char		*ft_strchr(const char *str, int c);
 
-char	*ft_strjoin_free_s1(char *s1, char *s2);
+char		*ft_strjoin_free_s1(char *s1, char *s2);
 
-size_t	ft_strlen(const char	*str);
+size_t		ft_strlen(const char *str);
 
 #endif

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/Hotrace.h"
+#include "Hotrace.h"
 
 
 char *hash_lookup(t_data *data, char *key)
