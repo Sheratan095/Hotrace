@@ -21,10 +21,10 @@
 */
 int	main(void)
 {
-	t_data	data;
+	t_data	*data = init_data();
 
-	data = init_data();
-	add_entry(&data, "key1", "value1");
+	data = add_entry(data, "key1", "value1");
+	printf("Entry added: key1:%s\n", hash_lookup(data, "key1"));
 	// if (parser(&data) == 1)
 		//error
 	return (0);

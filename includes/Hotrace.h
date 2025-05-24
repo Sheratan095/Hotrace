@@ -16,6 +16,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdarg.h>
+# include <stdio.h>
 # include <limits.h>
 # include <sys/time.h>
 # include <sys/types.h>
@@ -27,7 +28,8 @@
 # include "get_next_line_bonus.h"
 
 // 2^18 entries - good balance between size and performance
-# define MAX_ENTRIES 500009
+// # define MAX_ENTRIES 500009
+# define MAX_ENTRIES 2
 
 enum e_parsing_code
 {
@@ -65,11 +67,14 @@ typedef struct s_data
 
 //------------------ DATA ----------------
 
-t_data		init_data(void);
+t_data		*init_data(void);
 
-void		add_entry(t_data *data, char *key, char *value);
+t_data		*add_entry(t_data *data, char *key, char *value);
 
 int			get_index(t_entry *entry);
+
+char		*hash_lookup(t_data *data, char *key);
+
 
 //------------------ UTILS ----------------
 

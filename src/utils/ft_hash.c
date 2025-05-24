@@ -17,24 +17,26 @@ static uint32_t MurmurHash2 ( const void * key, int len, uint32_t seed );
 char *hash_lookup(t_data *data, char *key)
 {
 	uint32_t	target_hashed_key;
-	t_entry		entry;
+	t_entry		*entry;
 	int			index;
 
 	if (!data || !key)
 		return (NULL);
-	entry.key = key;
-	index = get_index(&entry);
-	target_hashed_key = entry.hashed_key;
+	entry = malloc(sizeof(t_entry));
+	entry->key = key;
+	index = get_index(entry);
+	target_hashed_key = entry->hashed_key;
+
 
 	if (data->entries[index]->next  == NULL)
 		return (data->entries[index]->value);
 	// horizontal collision
-	entry = *(data->entries[index]);
-	while (entry.next != NULL)
+	entry = data->entries[index];
+	while (entry->next != NULL)
 	{
-		if (entry.hashed_key == target_hashed_key)
-			return (entry.value);
-		entry = *(entry.next);
+		if (entry->hashed_key == target_hashed_key)
+			return (entry->value);
+		entry = entry->next;
 	}
 	return (NULL);
 }
