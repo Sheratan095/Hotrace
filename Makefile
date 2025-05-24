@@ -8,6 +8,8 @@ SRC = src/main.c \
 		src/utils/ft_strchr.c \
 		src/utils/ft_strjoin_free_s1.c \
 		src/utils/ft_strlen.c \
+		src/utils/ft_strlcpy.c \
+		src/utils/ft_memcpy.c \
 		src/get_next_line_bonus.c \
 		src/t_data.c
 
