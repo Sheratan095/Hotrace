@@ -46,18 +46,18 @@ static void	parse_line(t_data *data, char *line, char *key, t_bool_val *even)
 		line[ft_strlen(line) - 1] = '\0';
 		if ((*even).val == FALSE)
 		{
-			free(key); // Free previous key if exists
+			free(key);
 			key = line;
 		}
 		else
 		{
 			add_entry(data, key, line);
-			free(key); // Free the key after using it
-			key = NULL; // Reset key pointer
-			free(line); // Free the value line
+			free(key);
+			key = NULL;
+			free(line);
 		}
 		line = get_next_line(0, FALSE);
 	}
-	free(line); // Free the final newline
-	free(key);  // Free key if insertion ends with a key
+	free(line);
+	free(key);
 }
