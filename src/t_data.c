@@ -26,7 +26,6 @@ t_data	*add_entry(t_data *data, char *key, char *value)
 	int			index;
 
 	entry = malloc(sizeof(t_entry));
-	entry->next = NULL;
 	entry->key = malloc(ft_strlen(key) + 1 * sizeof(char));
 	entry->value = malloc(ft_strlen(value) + 1 * sizeof(char));
 	ft_strlcpy(entry->key, key, ft_strlen(key) + 1); // Assuming key is a string
@@ -36,6 +35,7 @@ t_data	*add_entry(t_data *data, char *key, char *value)
 	if (data->entries[index] == NULL)
 	{
 		data->entries[index] = entry;
+		entry->next = NULL;
 	}
 	else
 	{
