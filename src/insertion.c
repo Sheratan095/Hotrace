@@ -42,6 +42,7 @@ int insertion(t_data *data)
 		return (SYNTAX_ERROR);
 	if (!line)
 		return (EXIT);
+	ft_putstr_fd("\033[0;32mSEARCH:\033[0m\n", 1);
 	line = get_next_line(0, FALSE);
 	if (!line || line[0] == '\n')
 		return (free(line), EXIT);

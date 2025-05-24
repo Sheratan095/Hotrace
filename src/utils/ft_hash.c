@@ -27,7 +27,6 @@ char *hash_lookup(t_data *data, char *key)
 	entry->key = key;
 	index = get_index(entry);
 	target_hashed_key = entry->hashed_key;
-
 	if (data->entries[index]->next  == NULL)
 		return (data->entries[index]->value);
 	// horizontal collision

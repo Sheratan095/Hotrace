@@ -26,9 +26,13 @@ int	searcher(t_data *data)
 		if (!result)
 			error_print(NOT_FOUND, line);
 		else
+		{
 			ft_putstr_fd(result, 1);
+			write(1, "\n", 1);
+		}
 		line = get_next_line(0, FALSE);
 	}
+	ft_putstr_fd("\033[0;INPUT:\033[0m\n", 1);
 	line = get_next_line(0, FALSE);
 	if (!line || line[0] == '\n')
 		return (free(line), EXIT);
