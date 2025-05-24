@@ -63,10 +63,10 @@ t_entry		*create_entry(char *key, int value);
 //------------------ UTILS ----------------
 
 
-char	*ft_strchr(const char *str, int c);
+char		*ft_strchr(const char *str, int c);
 
-char	*ft_strjoin_free_s1(char *s1, char *s2);
+char		*ft_strjoin_free_s1(char *s1, char *s2);
 
-size_t	ft_strlen(const char	*str);
+size_t		ft_strlen(const char *str);
 
 #endif
