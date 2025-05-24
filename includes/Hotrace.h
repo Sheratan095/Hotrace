@@ -57,14 +57,14 @@ typedef enum e_mode
 typedef struct s_bool
 {
 	unsigned int	val:1;
-}t_bool_val;
+}	t_bool_val;
 
 typedef struct s_entry
 {
 	u_int32_t		hashed_key;
 	char			*key;
 	char			*value;
-	struct	s_entry	*next;
+	struct s_entry	*next;
 }	t_entry;
 
 typedef struct s_data
@@ -85,10 +85,9 @@ int			get_index(t_entry *entry);
 
 char		*hash_lookup(t_data *data, char *key);
 
-uint32_t	MurmurHash2 ( const void * key, int len, uint32_t seed );
+uint32_t	MurmurHash2( const void *key, int len, uint32_t seed );
 
 void		clean_up(t_data *data);
-
 
 //------------------ UTILS ----------------
 
