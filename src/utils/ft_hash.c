@@ -32,7 +32,7 @@ char *hash_lookup(t_data *data, char *key)
 		return (data->entries[index]->value);
 	// horizontal collision
 	entry = data->entries[index];
-	while (entry->next != NULL)
+	while (entry != NULL)
 	{
 		if (entry->hashed_key == target_hashed_key)
 			return (entry->value);

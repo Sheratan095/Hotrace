@@ -30,16 +30,18 @@ t_data	*add_entry(t_data *data, char *key, char *value)
 	ft_strlcpy(entry->key, key, ft_strlen(key) + 1); // Assuming key is a string
 	ft_strlcpy(entry->value, value, ft_strlen(value) + 1); // Assuming key is a strin
 	index = get_index(entry); // Calculate the index based on the hashed key
+	printf("key:%s index: %d\n", key,index);
 
-	// se 
-	// if (data->entries[index] == NULL)
-	// {
+	if (data->entries[index] == NULL)
+	{
 		data->entries[index] = entry;
-	// }
-	// else
-	// {
-	// 	data->entries[index]->next = entry;
-	// }
+	}
+	else
+	{
+		data->entries[index]->next = data->entries[index];
+		data->entries[index] = entry; // Insert at the head of the linked list
+	}
+
 
 	return (data);
 }
