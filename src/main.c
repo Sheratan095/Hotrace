@@ -13,11 +13,6 @@
 #include "Hotrace.h"
 
 /*
-	
-*/
-
-
-/*
 	1)	Capire cosa passare
 	2)	insert
 	3)	searcher
@@ -25,14 +20,14 @@
 */
 int	main(int argc, char **argv)
 {
-	t_data	data;
+	t_data	*data;
 
 	(void)argv;
 	if (argc != 1)
 		return (1);
 	usage();
 	data = init_data();
-	if (parser(&data) == 1)
+	if (parser(data) == 1)
 		//error
 	return (0);
 }	

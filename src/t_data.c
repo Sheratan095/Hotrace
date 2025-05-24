@@ -3,38 +3,46 @@
 
 // static void	insert_entry(t_data *data, t_entry *entry);
 
-t_data	init_data(void)
+t_data	*init_data(void)
 {
-	t_data	data;
+	t_data	*data;
 
-	data.mode = INSERTION;
+	data = malloc(sizeof(t_data));
+	data->mode = INSERTION;
+	int i = 0;
+	while (i < MAX_ENTRIES)
+	{
+		data->entries[i] = NULL;
+		i++;
+	}
 	return (data);
 }
 
-void	add_entry(t_data *data, char *key, char *value)
+t_data	*add_entry(t_data *data, char *key, char *value)
 {
-	(void)key;
-	(void)value;
-	(void)data;
+	t_entry		*entry;
+	int			index;
 
-	t_entry	entry;
-	// entry.hashed_key = NULL; // Placeholder for hashed key
-	ft_strlcpy(entry.key, key, ft_strlen(key)); // Assuming key is a string
-	ft_strlcpy(entry.value, value, ft_strlen(value)); // Assuming key is a string
+	entry = malloc(sizeof(t_entry));
+	entry->next = NULL;
+	entry->key = malloc(ft_strlen(key) + 1 * sizeof(char));
+	entry->value = malloc(ft_strlen(value) + 1 * sizeof(char));
+	ft_strlcpy(entry->key, key, ft_strlen(key) + 1); // Assuming key is a string
+	ft_strlcpy(entry->value, value, ft_strlen(value) + 1); // Assuming key is a strin
+	index = get_index(entry); // Calculate the index based on the hashed key
+	printf("key:%s index: %d\n", key,index);
 
-	// insert_entry(data, NULL);
+	if (data->entries[index] == NULL)
+	{
+		data->entries[index] = entry;
+	}
+	else
+	{
+		data->entries[index]->next = data->entries[index];
+		data->entries[index] = entry; // Insert at the head of the linked list
+	}
+
+
+	return (data);
 }
 
-// static void	insert_entry(t_data *data, t_entry *entry)
-// {
-// 	(void)data;
-// 	(void)entry;
-// 	// uint32_t	hash;
-// 	// uint32_t	index;
-
-// 	// if (!data || !entry)
-// 	// 	return ;
-// 	// hash = MurmurHash2(entry->key, ft_strlen(entry->key), 0);
-// 	// index = hash % MAX_ENTRIES;
-// 	// data->entries[index] = entry;
-// }
