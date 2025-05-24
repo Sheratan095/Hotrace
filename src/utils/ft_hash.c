@@ -12,21 +12,18 @@
 
 #include "Hotrace.h"
 
-static uint32_t MurmurHash2 ( const void * key, int len, uint32_t seed );
 
 char *hash_lookup(t_data *data, char *key)
 {
 	uint32_t	target_hashed_key;
-	t_entry		*entry;
+	t_entry		*entry = NULL;
 	int			index;
 
-	if (!data || !key)
+	if (!data || !key || data->first_entry == false )
 		return (NULL);
-	entry = malloc(sizeof(t_entry));
 	entry->key = key;
 	index = get_index(entry);
 	target_hashed_key = entry->hashed_key;
-
 
 	if (data->entries[index]->next  == NULL)
 		return (data->entries[index]->value);
@@ -79,7 +76,7 @@ char *hash_lookup(t_data *data, char *key)
 // 	return (ft_atoi(entry.hashed_key) % nearest_prime(MAX_ENTRIES));
 // }
 
-// assegna anche l'index
+// prende una entry e la inserisce nell'array entries
 int get_index(t_entry *entry)
 {
 	entry->hashed_key = MurmurHash2(entry->key, ft_strlen(entry->key), MAX_ENTRIES);
@@ -88,7 +85,7 @@ int get_index(t_entry *entry)
 
 
 // hash a gruppi di 4 byte, ogni 4 byte viene moltiplicato per un numero 'magico'
-static uint32_t MurmurHash2 ( const void * key, int len, uint32_t seed )
+uint32_t MurmurHash2 ( const void * key, int len, uint32_t seed )
 {
   const uint32_t m = 0x5bd1e995;
   const int r = 24;

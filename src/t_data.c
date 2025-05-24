@@ -8,6 +8,7 @@ t_data	*init_data(void)
 	t_data	*data;
 
 	data = malloc(sizeof(t_data));
+	data->first_entry = false;
 	data->mode = INSERTION;
 	int i = 0;
 	while (i < MAX_ENTRIES)
@@ -30,7 +31,6 @@ t_data	*add_entry(t_data *data, char *key, char *value)
 	ft_strlcpy(entry->key, key, ft_strlen(key) + 1); // Assuming key is a string
 	ft_strlcpy(entry->value, value, ft_strlen(value) + 1); // Assuming key is a strin
 	index = get_index(entry); // Calculate the index based on the hashed key
-	printf("key:%s index: %d\n", key,index);
 
 	if (data->entries[index] == NULL)
 	{
