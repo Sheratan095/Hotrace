@@ -43,9 +43,10 @@ typedef enum e_mode
 
 typedef struct s_entry
 {
-	char	*hashed_key;
-	char	*key;
-	char	*value;
+	char			*hashed_key;
+	char			*key;
+	char			*value;
+	struct	s_entry	*next;
 }	t_entry;
 
 typedef struct s_data
@@ -58,7 +59,7 @@ typedef struct s_data
 
 t_data		init_data(void);
 
-t_entry		*create_entry(char *key, int value);
+void		add_entry(t_data *data, char *key, int value);
 
 //------------------ UTILS ----------------
 
