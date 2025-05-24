@@ -24,17 +24,34 @@
 
 # include "get_next_line_bonus.h"
 
-typedef struct s_entry
-{
-	char	*key;
-	int		value;
-}	t_entry;
+// max size_t
+# define MAX_ENTRIES 4294967295
 
 typedef enum e_bool
 {
 	false,
 	true
 }	t_bool;
+
+typedef enum e_mode
+{
+	insertion,
+	search
+}	t_mode;
+
+typedef struct s_entry
+{
+	char	*key;
+	int		value;
+}	t_entry;
+
+typedef struct s_data
+{
+	t_entry	*entries[MAX_ENTRIES];
+	t_mode	mode;
+}	t_data;
+
+t_data	init_data(void);
 
 //------------------ UTILS ----------------
 

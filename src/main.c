@@ -14,4 +14,8 @@
 
 int	main(void)
 {
+	t_data	data;
+
+	data = init_data();
 }
+

@@ -8,7 +8,8 @@ SRC = src/main.c \
 		src/utils/ft_strchr.c \
 		src/utils/ft_strjoin_free_s1.c \
 		src/utils/ft_strlen.c \
-		src/get_next_line_bonus.c
+		src/get_next_line_bonus.c \
+		src/t_data.c
 
 FLAGS	= -g -O3
 FLAGS	+= -Wall -Werror -Wextra
