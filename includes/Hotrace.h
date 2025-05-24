@@ -27,18 +27,25 @@
 # include "get_next_line_bonus.h"
 
 // 2^18 entries - good balance between size and performance
-# define MAX_ENTRIES 500009 
+# define MAX_ENTRIES 500009
 
+enum e_parsing_code
+{
+	CONTINUE,
+	MALLOC_ERROR,
+	SYNTAX_ERROR,
+	EXIT,
+};
 typedef enum e_bool
 {
-	false,
-	true
+	FALSE,
+	TRUE,
 }	t_bool;
 
 typedef enum e_mode
 {
-	insertion,
-	search
+	INSERTION,
+	SEARCH,
 }	t_mode;
 
 typedef struct s_entry
@@ -53,6 +60,7 @@ typedef struct s_data
 {
 	t_entry	*entries[MAX_ENTRIES];
 	t_mode	mode;
+	char	*first_line;
 }	t_data;
 
 //------------------ DATA ----------------
@@ -71,6 +79,12 @@ char		*ft_strchr(const char *str, int c);
 
 char		*ft_strjoin_free_s1(char *s1, char *s2);
 
+size_t		ft_strlen(const char	*str);
+
+//----------------- PARSING ---------------
+
+int			parser(t_data *data);
+void		error_print(int error);
 size_t		ft_strlen(const char *str);
 
 #endif

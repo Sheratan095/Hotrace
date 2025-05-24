@@ -1,30 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   search.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maceccar <maceccar@student.42firenze.it>   +#+  +:+       +#+        */
+/*   By: cwannhed <cwannhed@student.42firenze.it>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/24 11:03:40 by maceccar          #+#    #+#             */
-/*   Updated: 2025/05/24 11:15:56 by maceccar         ###   ########.fr       */
+/*   Created: 2025/05/24 14:23:58 by cwannhed          #+#    #+#             */
+/*   Updated: 2025/05/24 14:43:38 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Hotrace.h"
+#include "../includes/Hotrace.h"
 
-
-/*
-	1)	Capire cosa passare
-	2)	insert
-	3)	searcher
-	4)	stampa errori
-*/
-int	main(void)
+int	searcher(t_data *data)
 {
-	t_data	data;
-
-	data = init_data();
-	if (parser(&data) == 1)
-		//error
-	return (0);
-}	
+	//if not first line exit
+}

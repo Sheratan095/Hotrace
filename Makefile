@@ -36,7 +36,7 @@ re: fclean all
 args =
 
 test: all
-	 ./$(NAME)
+	./$(NAME)
 
 val: all
 	$(VALGRIND) ./$(NAME)

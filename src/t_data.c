@@ -7,7 +7,7 @@ t_data	init_data(void)
 {
 	t_data	data;
 
-	data.mode = insertion;
+	data.mode = INSERTION;
 	return (data);
 }
 
