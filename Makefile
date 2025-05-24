@@ -32,7 +32,7 @@ FLAGS	+= -Wall -Werror -Wextra
 #__asm__
 
 $(NAME): $(SRC)
-	@cc $(SRC) $(INCLUDES) $(FLAGS) -lm -o $(NAME)
+	@cc $(SRC) $(INCLUDES) $(FLAGS) -o $(NAME)
 	@echo "$(GREEN)[$(NAME)]:\t PROJECT COMPILED$(RESET)"
 
 all:$(NAME)
