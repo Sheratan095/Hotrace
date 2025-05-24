@@ -10,31 +10,28 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/Hotrace.h"
+#include "../includes/Hotrace.h"
 
+// void	parse_entries() 
+// {
 
-//
-void	parse_entries() 
-{
-
-}
+// }
 
 int	parser(t_data *data)
 {
-	t_bool	mode;
 	int		result;
 
-	mode = INSERTION;
+	data->mode = INSERTION;
 	result = CONTINUE;
 	while (result == CONTINUE)
 	{
-		if (mode == INSERTION)
-			result = insert(data);
+		if (data->mode == INSERTION)
+			result = insertion(data);
 		else
 			result = searcher(data);
-		++mode;
+		++data->mode;
 	}
 	if (result == MALLOC_ERROR || result == SYNTAX_ERROR)
-		return (error_print(result));
+		return (error_print(result), result);
 	return (0);
 }

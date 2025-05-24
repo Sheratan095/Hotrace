@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   insertion.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cwannhed <cwannhed@student.42firenze.it>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/24 14:57:52 by cwannhed          #+#    #+#             */
+/*   Updated: 2025/05/24 14:57:54 by cwannhed         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/Hotrace.h"
 
 int insertion(t_data *data)
@@ -20,5 +32,5 @@ int insertion(t_data *data)
 			return (EXIT);
 		data->first_line = line;
 	}
-
+	return (0);
 }

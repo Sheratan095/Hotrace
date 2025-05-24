@@ -14,5 +14,7 @@
 
 int	searcher(t_data *data)
 {
+	(void)data;
 	//if not first line exit
+	return (0);
 }

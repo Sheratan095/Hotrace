@@ -84,7 +84,8 @@ size_t		ft_strlen(const char	*str);
 //----------------- PARSING ---------------
 
 int			parser(t_data *data);
+int			searcher(t_data *data);
+int			insertion(t_data *data);
 void		error_print(int error);
-size_t		ft_strlen(const char *str);
 
 #endif
