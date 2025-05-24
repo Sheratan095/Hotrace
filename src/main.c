@@ -30,4 +30,4 @@ int	main(int argc, char **argv)
 	parser(data);
 	clean_up(data);
 	return (0);
-}	
+}
