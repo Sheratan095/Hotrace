@@ -26,8 +26,8 @@
 
 # include "get_next_line_bonus.h"
 
-// max size_t
-# define MAX_ENTRIES 4294967295
+// 2^18 entries - good balance between size and performance
+# define MAX_ENTRIES 20
 
 typedef enum e_bool
 {
@@ -56,9 +56,9 @@ typedef struct s_data
 
 //------------------ DATA ----------------
 
-t_data	init_data(void);
+t_data		init_data(void);
 
-t_entry *create_entry(char *key, int value);
+t_entry		*create_entry(char *key, int value);
 
 //------------------ UTILS ----------------
 
