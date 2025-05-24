@@ -27,7 +27,7 @@
 # include "get_next_line_bonus.h"
 
 // 2^18 entries - good balance between size and performance
-# define MAX_ENTRIES 20
+# define MAX_ENTRIES 1000000
 
 typedef enum e_bool
 {
