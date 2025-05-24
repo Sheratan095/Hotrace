@@ -24,7 +24,7 @@ void	error_print(int error, char *keyword)
 		write(2, keyword, ft_strlen(keyword));
 		write(2, ": Not found.\n", 13);
 	}
-		else if (error == BAD_ARGC)
+	else if (error == BAD_ARGC)
 	{
 		write(2, "Please give no args.\n", 21);
 	}
