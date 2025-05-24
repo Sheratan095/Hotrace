@@ -26,12 +26,17 @@ int	parser(t_data *data)
 	while (result == CONTINUE)
 	{
 		if (data->mode == INSERTION)
+		{
 			result = insertion(data);
+			data->mode = SEARCH;
+		}
 		else
+		{
 			result = searcher(data);
-		++data->mode;
+			data->mode = INSERTION;
+		}
 	}
 	if (result == MALLOC_ERROR || result == SYNTAX_ERROR)
-		return (error_print(result), result);
+		return (error_print(result, NULL), result);
 	return (0);
 }

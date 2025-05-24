@@ -12,6 +12,10 @@
 
 #include "Hotrace.h"
 
+/*
+	
+*/
+
 
 /*
 	1)	Capire cosa passare
@@ -19,10 +23,14 @@
 	3)	searcher
 	4)	stampa errori
 */
-int	main(void)
+int	main(int argc, char **argv)
 {
 	t_data	data;
 
+	(void)argv;
+	if (argc != 1)
+		return (1);
+	usage();
 	data = init_data();
 	if (parser(&data) == 1)
 		//error

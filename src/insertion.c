@@ -12,25 +12,52 @@
 
 #include "../includes/Hotrace.h"
 
+static void	parse_line(t_data *data, char *line, char *key, t_bool_val *even);
+
+		//if line
+			//add_entry( arg )
+			// Nentry.key = prevkey 
+			//  Nentry.line = arg 
+			// idx = get_index();
+			// data.entry[idx] = entry. // collision management 
+			// if (data.entry[idx] != NULL)
+			// while (data.entry[idx].next != NULL)
+				// temp_entry = data.entry[idx].next
+			// data.entry[idx].next = Nentry
+		//free(line);
+		//
 int insertion(t_data *data)
 {
-	char	*line;
+	char		*line;
+	char		*key;
+	t_bool_val	even;
 
 	line = data->first_line;
+	key = NULL;
+	even.val = TRUE;
 	if (!line)
 		line = get_next_line(0, FALSE);
+	parse_line(data, line, key, &even);
+	if (even.val == FALSE)
+		return (SYNTAX_ERROR);
+	if (!line)
+		return (EXIT);
+	line = get_next_line(0, FALSE);
+	if (!line || line[0] == '\n')
+		return (free(line), EXIT);
+	data->first_line = line;
+	return (0);
+}
+
+static void	parse_line(t_data *data, char *line, char *key, t_bool_val *even)
+{
 	while (line && line[0] != '\n')
 	{
-		//
-		free(line);
+		++((*even).val);
+		if ((*even).val == TRUE)
+			key = line;
+		else
+			add_entry(data, key, line);
 		line = get_next_line(0, FALSE);
 	}
-	if (line && line[0] == '\n')
-	{
-		line = get_next_line(0, FALSE);
-		if (!line || line[0] == '\n')
-			return (EXIT);
-		data->first_line = line;
-	}
-	return (0);
 }

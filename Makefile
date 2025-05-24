@@ -5,6 +5,7 @@ VALGRIND =  valgrind --leak-check=full --track-origins=yes --track-fds=yes --sho
 INCLUDES = -I./includes
 
 SRC = src/main.c \
+		src/utils/ft_putstr_fd.c \
 		src/utils/ft_strchr.c \
 		src/utils/ft_strjoin_free_s1.c \
 		src/utils/ft_strlen.c \
@@ -15,7 +16,7 @@ SRC = src/main.c \
 		src/parser.c \
 		src/insertion.c \
 		src/search.c \
-		src/error.c
+		src/print_msg.c
 
 FLAGS	= -g -O3
 FLAGS	+= -Wall -Werror -Wextra

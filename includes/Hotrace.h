@@ -20,6 +20,7 @@
 # include <sys/time.h>
 # include <sys/types.h>
 # include <sys/stat.h>
+# include <stdbool.h>
 # include <fcntl.h>
 # include <stddef.h>
 # include <stdint.h>
@@ -34,8 +35,11 @@ enum e_parsing_code
 	CONTINUE,
 	MALLOC_ERROR,
 	SYNTAX_ERROR,
+	NOT_FOUND,
+	BAD_ARGC,
 	EXIT,
 };
+
 typedef enum e_bool
 {
 	FALSE,
@@ -47,6 +51,11 @@ typedef enum e_mode
 	INSERTION,
 	SEARCH,
 }	t_mode;
+
+typedef struct s_bool
+{
+	unsigned int	val:1;
+}t_bool_val;
 
 typedef struct s_entry
 {
@@ -81,11 +90,14 @@ char		*ft_strjoin_free_s1(char *s1, char *s2);
 
 size_t		ft_strlen(const char	*str);
 
+void		ft_putstr_fd(char *s, int fd);
+
 //----------------- PARSING ---------------
 
 int			parser(t_data *data);
 int			searcher(t_data *data);
 int			insertion(t_data *data);
-void		error_print(int error);
+void		error_print(int error, char *keyword);
+void		usage(void);
 
 #endif
