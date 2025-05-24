@@ -2,6 +2,7 @@
 
 void	error_print(int error, char *keyword)
 {
+	write(2, "\033[0;31m", 7);
 	if (error == MALLOC_ERROR)
 		write(2, "Malloc failed\n", 14);
 	else if (error == SYNTAX_ERROR)
@@ -15,11 +16,12 @@ void	error_print(int error, char *keyword)
 	{
 		write(2, "Please give no args.\n", 21);
 	}
+	write(2, "\033[0m", 4);
 }
 
 void	usage(void)
 {
-	ft_putstr_fd("Usage: ./hotrace\n\n", 1);
+	ft_putstr_fd("\033[0;34mUsage:\033[0m ./hotrace\n\n", 1);
 	ft_putstr_fd("This program implements a minimal search engine.\n\n", 1);
 	ft_putstr_fd("Input format (via standard input):\n", 1);
 	ft_putstr_fd("1. First phase — insertion:\n", 1);
