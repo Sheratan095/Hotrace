@@ -41,8 +41,7 @@ t_data	*add_entry(t_data *data, char *key, char *value)
 		data->entries[index]->next = data->entries[index];
 		data->entries[index] = entry; // Insert at the head of the linked list
 	}
-
-
+	data->first_entry = true;
 	return (data);
 }
 

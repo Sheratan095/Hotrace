@@ -21,6 +21,9 @@ char *hash_lookup(t_data *data, char *key)
 
 	if (!data || !key || data->first_entry == false )
 		return (NULL);
+	entry = malloc(sizeof(t_entry));
+	if (!entry)
+		return (error_print(MALLOC_ERROR, NULL), NULL);
 	entry->key = key;
 	index = get_index(entry);
 	target_hashed_key = entry->hashed_key;
