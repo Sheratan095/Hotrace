@@ -12,11 +12,6 @@
 
 #include "Hotrace.h"
 
-// void	parse_entries() 
-// {
-
-// }
-
 int	parser(t_data *data)
 {
 	int		result;

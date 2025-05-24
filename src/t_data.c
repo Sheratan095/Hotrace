@@ -9,6 +9,7 @@ t_data	*init_data(void)
 
 	data = malloc(sizeof(t_data));
 	data->first_entry = false;
+	data->first_line = NULL;
 	data->mode = INSERTION;
 	int i = 0;
 	while (i < MAX_ENTRIES)
@@ -38,6 +39,7 @@ t_data	*add_entry(t_data *data, char *key, char *value)
 	}
 	else
 	{
+		data->entries[index]->next = NULL;
 		data->entries[index]->next = data->entries[index];
 		data->entries[index] = entry; // Insert at the head of the linked list
 	}

@@ -33,6 +33,7 @@ int insertion(t_data *data)
 	t_bool_val	even;
 
 	line = data->first_line;
+
 	key = NULL;
 	even.val = TRUE;
 	if (!line)
