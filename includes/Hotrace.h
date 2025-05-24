@@ -21,6 +21,8 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
+# include <stddef.h>
+# include <stdint.h>
 
 # include "get_next_line_bonus.h"
 
@@ -51,9 +53,14 @@ typedef struct s_data
 	t_mode	mode;
 }	t_data;
 
+//------------------ DATA ----------------
+
 t_data	init_data(void);
 
+t_entry *create_entry(char *key, int value);
+
 //------------------ UTILS ----------------
+
 
 char	*ft_strchr(const char *str, int c);
 
