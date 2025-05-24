@@ -22,9 +22,6 @@ char *hash_lookup(t_data *data, char *key)
 	if (!data || !key || data->first_entry == false )
 		return (NULL);
 
-	// entry = malloc(sizeof(t_entry));
-	// if (!entry)
-		// return (error_print(MALLOC_ERROR, NULL), NULL);
 	target_entry.key = key;
 	index = get_index(&target_entry);
 
@@ -114,7 +111,11 @@ uint32_t MurmurHash2 ( const void * key, int len, uint32_t seed )
     data += 4;
     len -= 4;
   }
-  if (len == 1);
+  if (len == 1)
+  {
+	h ^= data[0];
+	h *= m;
+  }
   else if (len == 3) h ^= data[2] << 16;
   else if (len == 2) h ^= data[1] << 8;
 
