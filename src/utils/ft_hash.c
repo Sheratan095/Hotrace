@@ -15,28 +15,25 @@
 
 char *hash_lookup(t_data *data, char *key)
 {
-	uint32_t hash;
-	int index;
-	int n;
+	uint32_t	target_hashed_key;
+	t_entry		*entry;
+	int			index;
 
 	if (!data || !key)
 		return (NULL);
-	index = get_index(data, key);
-	if (data->entries[index]->hashed_key && ft_strcmp(data->entries[index]->hashed_key, ft_itoa(hash)) == 0)
+	entry->key = key;
+	index = get_index(data, entry);
+	target_hashed_key = entry->hashed_key;
+
+	if (data->entries[index]->next  == NULL)
 		return (data->entries[index]->value);
-	else // linear search
+	// horizontal collision
+	entry = data->entries[index];
+	while (entry != NULL)
 	{
-		n = index;
-		while (data->entries[index]->hashed_key &&
-				ft_strcmp(data->entries[index]->hashed_key, ft_itoa(hash)) != 0)
-		{
-			n++;
-			if (n == index)
-				return (NULL); // not found
-			if (n >= MAX_ENTRIES)
-				n = 0; // wrap around
-		}
-		return (data->entries[n]->value);
+		if (ft_strcmp(entry->hashed_key, target_hashed_key) == 0)
+			return (entry->value);
+		entry = entry->next;
 	}
 	return (NULL);
 }
