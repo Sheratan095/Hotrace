@@ -1,4 +1,4 @@
-[] INPUT:
+[x] INPUT:
 c
 c
 
@@ -8,7 +8,7 @@ c
 d
 c
 
-[] INPUT:
+[X] INPUT:
 asc
 asc
 
@@ -17,3 +17,5 @@ gdfgfd
 zsh: segmentation fault (core dumped)  ./hotrace
 
 [] format msgs for ./hotrace < file.txt?
+
+[] Remove those t_bool_vars and use t_bool insteadg
