@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Hotrace.h"
+#include "Hotrace.h"
 
 // void	parse_entries() 
 // {
