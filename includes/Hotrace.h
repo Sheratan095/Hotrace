@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #ifndef HOTRACE_H
-#define HOTRACE_H
+# define HOTRACE_H
 
 # include <unistd.h>
 # include <stdlib.h>
@@ -22,21 +22,19 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 
-#include "get_next_line_bonus.h"
+# include "get_next_line_bonus.h"
 
-
-typedef struct
+typedef struct s_entry
 {
-	char*	key;
+	char	*key;
 	int		value;
-} entity;
+}	t_entry;
 
 typedef enum e_bool
 {
 	false,
 	true
 }	t_bool;
-
 
 //------------------ UTILS ----------------
 
@@ -47,4 +45,3 @@ char	*ft_strjoin_free_s1(char *s1, char *s2);
 size_t	ft_strlen(const char	*str);
 
 #endif
-
