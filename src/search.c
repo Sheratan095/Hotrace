@@ -30,8 +30,10 @@ int	searcher(t_data *data)
 			ft_putstr_fd(result, 1);
 			write(1, "\n", 1);
 		}
+		free(line);
 		line = get_next_line(0, FALSE);
 	}
+	free(line);
 	ft_putstr_fd("\033[0;32mINPUT:\033[0m\n", 1);
 	line = get_next_line(0, FALSE);
 	if (!line || line[0] == '\n')
