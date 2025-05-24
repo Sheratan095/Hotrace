@@ -12,28 +12,21 @@
 
 #include "Hotrace.h"
 
-
-char *hash_lookup(t_data *data, char *key)
+char	*hash_lookup(t_data *data, char *key)
 {
 	t_entry		target_entry;
 	t_entry		*found_entry;
 	int			index;
 
-	if (!data || !key || data->first_entry == false )
+	if (!data || !key || data->first_entry == false)
 		return (NULL);
-
 	target_entry.key = key;
 	index = get_index(&target_entry);
-
 	found_entry = data->entries[index];
-
 	if (found_entry == NULL)
 		return (NULL);
-
-	if (found_entry->next  == NULL)
+	if (found_entry->next == NULL)
 		return (found_entry->value);
-
-	// horizontal collision
 	while (found_entry != NULL)
 	{
 		if (found_entry->hashed_key == target_entry.hashed_key)
