@@ -1,5 +1,12 @@
 NAME		= hotrace
 
+TESTS = test01.htr \
+			test02.htr \
+			test03.htr \
+			test04.htr \
+			test05.htr
+
+
 VALGRIND =  valgrind --leak-check=full --track-origins=yes --track-fds=yes --show-leak-kinds=all
 
 INCLUDES = -I./includes
@@ -43,6 +50,13 @@ args =
 
 test: all
 	./$(NAME)
+
+tests: re all
+	@mkdir -p results
+	@for test in $(TESTS); do \
+		echo "Running $$test..."; \
+		time ./$(NAME) < tests/resources/$$test; \
+	done
 
 val: all
 	$(VALGRIND) ./$(NAME)
