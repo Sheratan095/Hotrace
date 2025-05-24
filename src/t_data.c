@@ -47,3 +47,23 @@ t_data	*add_entry(t_data *data, char *key, char *value)
 	return (data);
 }
 
+void	clean_up(t_data *data)
+{
+	int		i;
+	t_entry	*current;
+	t_entry	*temp;
+
+	i = 0;
+	while (data->entries[i] != NULL && i < MAX_ENTRIES)
+	{
+		while (current != NULL)
+		{
+			temp = current;
+			current = current->next;
+			free(temp->key);
+			free(temp->value);
+			free(temp);
+		}
+	}
+	free(data);
+}
