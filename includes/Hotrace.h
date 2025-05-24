@@ -59,10 +59,13 @@ typedef struct s_data
 
 t_data		init_data(void);
 
-void		add_entry(t_data *data, char *key, int value);
+void		add_entry(t_data *data, char *key, char *value);
 
 //------------------ UTILS ----------------
 
+void		*ft_memcpy(void *dest, const void *src, size_t n);
+
+size_t		ft_strlcpy(char *dst, const char *src, size_t size);
 
 char		*ft_strchr(const char *str, int c);
 
