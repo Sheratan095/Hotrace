@@ -56,14 +56,21 @@ static void	parse_line(t_data *data, char *line, char *key, t_bool_val *even)
 	while (line && line[0] != '\n')
 	{
 		++((*even).val);
+		line[ft_strlen(line) - 1] = '\0';
 		if ((*even).val == FALSE)
 			key = line;
 		else
 		{
-			key[ft_strlen(key) - 1] = '\0';
-			line[ft_strlen(line) - 1] = '\0';
+			// key[ft_strlen(key) - 1] = '\0';
+			// line[ft_strlen(line) - 1] = '\0';
 			add_entry(data, key, line);
 		}
+		// write(1, "|", 1);
+		// write(1, key, ft_strlen(key));
+		// write(1, "|", 1);
+		// write(1, "|", 1);
+		// write(1, line, ft_strlen(line));
+		// write(1, "|", 1);
 		line = get_next_line(0, FALSE);
 	}
 }
