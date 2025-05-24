@@ -39,9 +39,8 @@ t_data	*add_entry(t_data *data, char *key, char *value)
 	}
 	else
 	{
-		data->entries[index]->next = NULL;
-		data->entries[index]->next = data->entries[index];
-		data->entries[index] = entry; // Insert at the head of the linked list
+		entry->next = data->entries[index]; // Point to the existing chain
+		data->entries[index] = entry;       // Insert at the head of the linked list
 	}
 	data->first_entry = true;
 	return (data);
@@ -54,16 +53,22 @@ void	clean_up(t_data *data)
 	t_entry	*temp;
 
 	i = 0;
-	while (data->entries[i] != NULL && i < MAX_ENTRIES)
+	while (i < MAX_ENTRIES)
 	{
-		while (current != NULL)
+		if (data->entries[i] != NULL)
 		{
-			temp = current;
-			current = current->next;
-			free(temp->key);
-			free(temp->value);
-			free(temp);
+			current = data->entries[i];
+			while (current != NULL)
+			{
+				temp = current;
+				current = current->next;
+				free(temp->key);
+				free(temp->value);
+				free(temp);
+			}
+			data->entries[i] = NULL; // Clear the entry slot
 		}
+		i++;
 	}
 	free(data);
 }
