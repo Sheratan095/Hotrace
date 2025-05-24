@@ -39,6 +39,7 @@ t_data	*add_entry(t_data *data, char *key, char *value)
 	}
 	else
 	{
+		data->entries[index]->next = NULL;
 		data->entries[index]->next = data->entries[index];
 		data->entries[index] = entry; // Insert at the head of the linked list
 	}
