@@ -14,26 +14,13 @@
 
 static void	parse_line(t_data *data, char *line, char *key, t_bool_val *even);
 
-		//if line
-			//add_entry( arg )
-			// Nentry.key = prevkey 
-			//  Nentry.line = arg 
-			// idx = get_index();
-			// data.entry[idx] = entry. // collision management 
-			// if (data.entry[idx] != NULL)
-			// while (data.entry[idx].next != NULL)
-				// temp_entry = data.entry[idx].next
-			// data.entry[idx].next = Nentry
-		//free(line);
-		//
-int insertion(t_data *data)
+int	insertion(t_data *data)
 {
 	char		*line;
 	char		*key;
 	t_bool_val	even;
 
 	line = data->first_line;
-
 	key = NULL;
 	even.val = TRUE;
 	if (!line)
@@ -61,16 +48,8 @@ static void	parse_line(t_data *data, char *line, char *key, t_bool_val *even)
 			key = line;
 		else
 		{
-			// key[ft_strlen(key) - 1] = '\0';
-			// line[ft_strlen(line) - 1] = '\0';
 			add_entry(data, key, line);
 		}
-		// write(1, "|", 1);
-		// write(1, key, ft_strlen(key));
-		// write(1, "|", 1);
-		// write(1, "|", 1);
-		// write(1, line, ft_strlen(line));
-		// write(1, "|", 1);
 		line = get_next_line(0, FALSE);
 	}
 }
