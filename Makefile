@@ -10,6 +10,7 @@ SRC = src/main.c \
 		src/utils/ft_strlen.c \
 		src/utils/ft_strlcpy.c \
 		src/utils/ft_memcpy.c \
+		src/utils/ft_hash.c \
 		src/get_next_line_bonus.c \
 		src/t_data.c \
 		src/parser.c \

@@ -50,7 +50,7 @@ typedef enum e_mode
 
 typedef struct s_entry
 {
-	char			*hashed_key;
+	u_int32_t		hashed_key;
 	char			*key;
 	char			*value;
 	struct	s_entry	*next;
@@ -69,6 +69,8 @@ t_data		init_data(void);
 
 void		add_entry(t_data *data, char *key, char *value);
 
+int			get_index(t_entry *entry);
+
 //------------------ UTILS ----------------
 
 void		*ft_memcpy(void *dest, const void *src, size_t n);
@@ -79,7 +81,7 @@ char		*ft_strchr(const char *str, int c);
 
 char		*ft_strjoin_free_s1(char *s1, char *s2);
 
-size_t		ft_strlen(const char	*str);
+size_t		ft_strlen(const char *str);
 
 //----------------- PARSING ---------------
 

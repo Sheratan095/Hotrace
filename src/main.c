@@ -24,7 +24,8 @@ int	main(void)
 	t_data	data;
 
 	data = init_data();
-	if (parser(&data) == 1)
+	add_entry(&data, "key1", "value1");
+	// if (parser(&data) == 1)
 		//error
 	return (0);
 }	
