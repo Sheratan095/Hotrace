@@ -31,6 +31,7 @@ int	parser(t_data *data)
 			data->mode = INSERTION;
 		}
 	}
+	get_next_line(0, true);
 	if (result == MALLOC_ERROR || result == SYNTAX_ERROR)
 		return (error_print(result, NULL), result);
 	return (0);
