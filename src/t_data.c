@@ -9,6 +9,7 @@ t_data	*init_data(void)
 
 	data = malloc(sizeof(t_data));
 	data->first_entry = false;
+	data->first_line = NULL;
 	data->mode = INSERTION;
 	int i = 0;
 	while (i < MAX_ENTRIES)
