@@ -22,13 +22,13 @@ char *hash_lookup(t_data *data, char *key)
 	if (!data || !key)
 		return (NULL);
 	index = get_index(data, key);
-	if (data->entries[index].hashed_key && ft_strcmp(data->entries[index].hashed_key, ft_itoa(hash)) == 0)
-		return (data->entries[index].value);
+	if (data->entries[index]->hashed_key && ft_strcmp(data->entries[index]->hashed_key, ft_itoa(hash)) == 0)
+		return (data->entries[index]->value);
 	else // linear search
 	{
 		n = index;
-		while (data->entries[index].hashed_key &&
-				ft_strcmp(data->entries[index].hashed_key, ft_itoa(hash)) != 0)
+		while (data->entries[index]->hashed_key &&
+				ft_strcmp(data->entries[index]->hashed_key, ft_itoa(hash)) != 0)
 		{
 			n++;
 			if (n == index)
@@ -36,7 +36,7 @@ char *hash_lookup(t_data *data, char *key)
 			if (n >= MAX_ENTRIES)
 				n = 0; // wrap around
 		}
-		return (data->entries[n].value);
+		return (data->entries[n]->value);
 	}
 	return (NULL);
 }
