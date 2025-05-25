@@ -29,7 +29,7 @@
 # include "get_next_line_bonus.h"
 
 // 2^18 entries - good balance between size and performance
-# define MAX_ENTRIES 500009
+# define MAX_ENTRIES 240009
 // # define MAX_ENTRIES 5
 
 enum e_parsing_code
@@ -93,7 +93,6 @@ void		*ft_bzero(void *dest, size_t count);
 void		*ft_calloc(size_t nitems, size_t size);
 
 void		*ft_memset(void *dest, int c, size_t count);
-
 
 //----------------- PARSING ---------------
 

@@ -19,7 +19,7 @@ int	insertion(t_data *data)
 	return (parse_line(data));
 }
 
-static int	parse_line(t_data *data)
+static int	insertion(t_data *data)
 {
 	size_t	line_len;
 	size_t	key_len;
