@@ -14,25 +14,25 @@
 
 int	parser(t_data *data)
 {
-	int		result;
+	int	parsing_code;
 
 	data->mode = INSERTION;
-	result = CONTINUE;
-	while (result == CONTINUE)
+	parsing_code = CONTINUE;
+	while (parsing_code == CONTINUE)
 	{
 		if (data->mode == INSERTION)
 		{
-			result = insertion(data);
+			parsing_code = insertion(data);
 			data->mode = SEARCH;
 		}
 		else
 		{
-			result = searcher(data);
+			parsing_code = searcher(data);
 			data->mode = INSERTION;
 		}
 	}
 	get_next_line(0, TRUE);
-	if (result == MALLOC_ERROR || result == SYNTAX_ERROR)
-		return (error_print(result, NULL), result);
+	if (parsing_code == MALLOC_ERROR || parsing_code == SYNTAX_ERROR)
+		return (error_print(parsing_code, NULL), parsing_code);
 	return (0);
 }
