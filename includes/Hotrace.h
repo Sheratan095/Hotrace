@@ -75,7 +75,7 @@ typedef struct s_data
 
 t_data		*init_data(void);
 
-t_data		*add_entry(t_data *data, char *key, char *value);
+t_data		*add_entry(t_data *data, char *key, char *value, size_t key_len, size_t value_len);
 
 int			get_index(t_entry *entry);
 
