@@ -54,28 +54,36 @@ args =
 
 val_test: all
 	$(VALGRIND) ./$(NAME) < tests/resources/test01.htr
+	@echo "$(BLUE)[HOTRACE]:\t[ENTER] NEXT TEST$(RESET)"
+	@read ans
 	$(VALGRIND) ./$(NAME) < tests/resources/test02.htr
+	@echo "$(BLUE)[HOTRACE]:\t[ENTER] NEXT TEST$(RESET)"
+	@read ans
 	$(VALGRIND) ./$(NAME) < tests/resources/test03.htr
-	$(VALGRIND) ./$(NAME) < tests/resources/test04.htr
-	$(VALGRIND) ./$(NAME) < tests/resources/test05.htr
-	$(VALGRIND) ./$(NAME) < tests/resources/test06.htr
+	@echo "$(BLUE)[HOTRACE]:\t[ENTER] NEXT TEST$(RESET)"
+	@read ans
+	$(VALGRIND) ./$(NAME) < tests/resources/test04.htrs
+	@echo "$(BLUE)[HOTRACE]:\t[ENTER] NEXT TEST$(RESET)"
 	@echo "$(GREEN)[HOTRACE]:\t ALL TESTS PASSED$(RESET)"
 
 test: all
-	./$(NAME) < tests/resources/test01.htr
-	./$(NAME) < tests/resources/test02.htr
-	./$(NAME) < tests/resources/test03.htr
-	./$(NAME) < tests/resources/test04.htr
-	./$(NAME) < tests/resources/test05.htr
-	./$(NAME) < tests/resources/test06.htr
+	time ./$(NAME) < tests/resources/test01.htr
+	@echo "$(BLUE)[HOTRACE]:\t[ENTER] NEXT TEST$(RESET)"
+	@read ans
+	time ./$(NAME) < tests/resources/test02.htr
+	@echo "$(BLUE)[HOTRACE]:\t[ENTER] NEXT TEST$(RESET)"
+	@read ans
+	time ./$(NAME) < tests/resources/test03.htr
+	@echo "$(BLUE)[HOTRACE]:\t[ENTER] NEXT TEST$(RESET)"
+	@read ans
+	time ./$(NAME) < tests/resources/test04.htr
+	@echo "$(BLUE)[HOTRACE]:\t[ENTER] NEXT TEST$(RESET)"
+	@read ans
+	time ./$(NAME) < tests/resources/test05.htr
+	@echo "$(BLUE)[HOTRACE]:\t[ENTER] NEXT TEST$(RESET)"
+	@read ans
+	time ./$(NAME) < tests/resources/test06.htr
 	@echo "$(GREEN)[HOTRACE]:\t ALL TESTS PASSED$(RESET)"
-
-tests: re all
-	@mkdir -p results
-	@for test in $(TESTS); do \
-		echo "Running $$test..."; \
-		time ./$(NAME) < tests/resources/$$test; \
-	done
 
 val: all
 	$(VALGRIND) ./$(NAME) $(REDIR)
