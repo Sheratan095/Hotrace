@@ -53,36 +53,36 @@ re: fclean all
 args =
 
 val_test: all
-	$(VALGRIND) ./$(NAME) < tests/resources/test01.htr
+	$(VALGRIND) ./$(NAME) < tests/test01.htr
 	@echo "$(BLUE)[HOTRACE]:\t[ENTER] NEXT TEST$(RESET)"
 	@read ans
-	$(VALGRIND) ./$(NAME) < tests/resources/test02.htr
+	$(VALGRIND) ./$(NAME) < tests/test02.htr
 	@echo "$(BLUE)[HOTRACE]:\t[ENTER] NEXT TEST$(RESET)"
 	@read ans
-	$(VALGRIND) ./$(NAME) < tests/resources/test03.htr
+	$(VALGRIND) ./$(NAME) < tests/test03.htr
 	@echo "$(BLUE)[HOTRACE]:\t[ENTER] NEXT TEST$(RESET)"
 	@read ans
-	$(VALGRIND) ./$(NAME) < tests/resources/test04.htrs
+	$(VALGRIND) ./$(NAME) < tests/test04.htr
 	@echo "$(BLUE)[HOTRACE]:\t[ENTER] NEXT TEST$(RESET)"
 	@echo "$(GREEN)[HOTRACE]:\t ALL TESTS PASSED$(RESET)"
 
 test: all
-	time ./$(NAME) < tests/resources/test01.htr
+	time ./$(NAME) < tests/test01.htr
 	@echo "$(BLUE)[HOTRACE]:\t[ENTER] NEXT TEST$(RESET)"
 	@read ans
-	time ./$(NAME) < tests/resources/test02.htr
+	time ./$(NAME) < tests/test02.htr
 	@echo "$(BLUE)[HOTRACE]:\t[ENTER] NEXT TEST$(RESET)"
 	@read ans
-	time ./$(NAME) < tests/resources/test03.htr
+	time ./$(NAME) < tests/test03.htr
 	@echo "$(BLUE)[HOTRACE]:\t[ENTER] NEXT TEST$(RESET)"
 	@read ans
-	time ./$(NAME) < tests/resources/test04.htr
+	time ./$(NAME) < tests/test04.htr
 	@echo "$(BLUE)[HOTRACE]:\t[ENTER] NEXT TEST$(RESET)"
 	@read ans
-	time ./$(NAME) < tests/resources/test05.htr
+	time ./$(NAME) < tests/test05.htr
 	@echo "$(BLUE)[HOTRACE]:\t[ENTER] NEXT TEST$(RESET)"
 	@read ans
-	time ./$(NAME) < tests/resources/test06.htr
+	time ./$(NAME) < tests/test06.htr
 	@echo "$(GREEN)[HOTRACE]:\t ALL TESTS PASSED$(RESET)"
 
 val: all
