@@ -23,16 +23,19 @@ char	*hash_lookup(t_data *data, char *key)
 	target_entry.key = key;
 	index = get_index(&target_entry, ft_strlen(key));
 	found_entry = data->entries[index];
-	if (found_entry == NULL)
-		return (NULL);
-	if (found_entry->next == NULL)
+	if (found_entry != NULL)
 		return (found_entry->value);
-	while (found_entry != NULL)
+	while (found_entry)
 	{
 		if (found_entry->hashed_key == target_entry.hashed_key)
 			return (found_entry->value);
-		found_entry = found_entry->next;
+		index++;
+		if (index >= MAX_ENTRIES)
+			index = 0;
+		found_entry = data->entries[index];
 	}
+
+
 	return (NULL);
 }
 
@@ -138,7 +141,7 @@ uint32_t MurmurHash2 ( const void * key, int len, uint32_t seed )
   h ^= h >> 15;
 
   return h;
-} 
+}
 
 // implementazione piu performante sui sistemi a 64 bit
 

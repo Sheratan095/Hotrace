@@ -40,14 +40,22 @@ t_data	*add_entry(t_data *data, char *key, char *value, size_t key_len, size_t v
 	// ft_strlcpy(entry->value, value, value_len + 1);
 	index = get_index(entry, key_len);
 	if (data->entries[index] == NULL)
-	{
 		data->entries[index] = entry;
-		entry->next = NULL;
-	}
 	else
 	{
-		entry->next = data->entries[index];
-		data->entries[index] = entry;
+		while (data->entries[index] != NULL)
+		{
+			if (data->entries[index]->hashed_key == entry->hashed_key)
+			{
+				free(data->entries[index]->value);
+				data->entries[index]->value = value;
+				free(entry);
+				return (data);
+			}
+			index++;
+			if (index >= MAX_ENTRIES)
+				index = 0;
+		}
 	}
 	data->first_entry = true;
 	return (data);
@@ -65,14 +73,10 @@ void	clean_up(t_data *data)
 		if (data->entries[i] != NULL)
 		{
 			current = data->entries[i];
-			while (current != NULL)
-			{
-				temp = current;
-				current = current->next;
-				free(temp->key);
-				free(temp->value);
-				free(temp);
-			}
+			temp = current;
+			free(temp->key);
+			free(temp->value);
+			free(temp);
 			data->entries[i] = NULL;
 		}
 		i++;
