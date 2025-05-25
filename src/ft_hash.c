@@ -104,14 +104,11 @@ uint32_t MurmurHash2 ( const void * key, int len, uint32_t seed )
     data += 4;
     len -= 4;
   }
-  if (len == 1)
-  {
-	h ^= data[0];
-	h *= m;
-  }
+  if (len == 1) h ^= data[0];
   else if (len == 3) h ^= data[2] << 16;
   else if (len == 2) h ^= data[1] << 8;
 
+  h *= m;
 
   h ^= h >> 13;
   h *= m;
