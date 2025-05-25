@@ -103,7 +103,7 @@ void		*ft_bzero(void *dest, size_t count);
 
 void		*ft_calloc(size_t nitems, size_t size);
 
-void	*	ft_memset(void *dest, int c, size_t count);
+void		*ft_memset(void *dest, int c, size_t count);
 
 
 //----------------- PARSING ---------------
