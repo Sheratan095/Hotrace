@@ -55,7 +55,7 @@ static void	parse_line(t_data *data, char *line, char *key)
 		}
 		else
 		{
-			add_entry(data, key, line, key_len, line_len);
+			add_entry(data, key, line, key_len - 1, line_len - 1);
 			free(key);
 			key = NULL;
 			free(line);
