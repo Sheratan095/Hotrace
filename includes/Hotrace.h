@@ -73,11 +73,11 @@ typedef struct s_data
 
 //------------------ DATA ----------------
 
-t_data		*init_data(void);
+void		init_data(t_data *data);
 
 t_data		*add_entry(t_data *data, char *key, char *value, size_t key_len, size_t value_len);
 
-int			get_index(t_entry *entry);
+int			get_index(t_entry *entry, size_t key_len);
 
 char		*hash_lookup(t_data *data, char *key);
 

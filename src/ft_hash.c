@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_hash.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alerusso <alerusso@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cwannhed <cwannhed@student.42firenze.it>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 11:35:32 by cwannhed          #+#    #+#             */
-/*   Updated: 2025/05/25 13:36:20 by alerusso         ###   ########.fr       */
+/*   Updated: 2025/05/25 11:15:56 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*hash_lookup(t_data *data, char *key)
 	if (!data || !key || data->first_entry == false)
 		return (NULL);
 	target_entry.key = key;
-	index = get_index(&target_entry);
+	index = get_index(&target_entry, ft_strlen(key));
 	found_entry = data->entries[index];
 	if (found_entry == NULL)
 		return (NULL);
@@ -75,9 +75,9 @@ char	*hash_lookup(t_data *data, char *key)
 // }
 
 // prende una entry e la inserisce nell'array entries
-int get_index(t_entry *entry)
+int get_index(t_entry *entry, size_t key_len)
 {
-	entry->hashed_key = MurmurHash2(entry->key, ft_strlen(entry->key), MAX_ENTRIES);
+	entry->hashed_key = MurmurHash2(entry->key, key_len, MAX_ENTRIES);
 	return (entry->hashed_key % MAX_ENTRIES);
 }
 
