@@ -16,22 +16,10 @@ int	handle_data(t_data *data)
 {
 	int	parsing_code;
 
-	data->mode = INSERTION;
-	parsing_code = CONTINUE;
-	while (parsing_code == CONTINUE)
-	{
-		if (data->mode == INSERTION)
-		{
-			parsing_code = insertion(data);
-			data->mode = SEARCH;
-		}
-		else
-		{
-			parsing_code = searcher(data);
-			data->mode = INSERTION;
-		}
-	}
-	get_next_line(0, TRUE);
+	parsing_code = insertion(data);
+	if (parsing_code == MALLOC_ERROR || parsing_code == SYNTAX_ERROR)
+		return (error_print(parsing_code, NULL), parsing_code);
+	parsing_code = searcher(data);
 	if (parsing_code == MALLOC_ERROR || parsing_code == SYNTAX_ERROR)
 		return (error_print(parsing_code, NULL), parsing_code);
 	return (0);

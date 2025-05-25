@@ -12,36 +12,29 @@
 
 #include "Hotrace.h"
 
-static void	parse_line(t_data *data, char *line, char *key);
+static int	parse_line(t_data *data, char *line, char *key);
 
 int	insertion(t_data *data)
 {
 	char		*line;
 	char		*key;
 
-	line = data->first_line;
 	key = NULL;
+	line = NULL;
 	data->is_even = TRUE;
-	if (!line)
-		line = get_next_line(0, FALSE);
-	parse_line(data, line, key);
+	if (parse_line(data, line, key) == EXIT)
+		return (EXIT);
 	if (data->is_even == FALSE)
 		return (SYNTAX_ERROR);
-	if (!line)
-		return (EXIT);
-	ft_putstr_fd("\033[0;32mSEARCH:\033[0m\n", 1);
-	line = get_next_line(0, FALSE);
-	if (!line || line[0] == '\n')
-		return (free(line), EXIT);
-	data->first_line = line;
-	return (0);
+	return (EXIT);
 }
 
-static void	parse_line(t_data *data, char *line, char *key)
+static int	parse_line(t_data *data, char *line, char *key)
 {
 	size_t	line_len;
 	size_t	key_len;
 
+	line = get_next_line(0, FALSE);
 	while (line && line[0] != '\n')
 	{
 		data->is_even = !data->is_even;
@@ -49,19 +42,19 @@ static void	parse_line(t_data *data, char *line, char *key)
 		line[line_len - 1] = '\0';
 		if (data->is_even == FALSE)
 		{
-			// free(key);
 			key = line;
+			//free(line);
 			key_len = line_len;
 		}
 		else
 		{
 			add_entry(data, key, line, key_len - 1, line_len - 1);
-			// free(key);
 			key = NULL;
-			// free(line);
 		}
 		line = get_next_line(0, FALSE);
 	}
-	free(line);
 	free(key);
+	if (!line)
+		return (EXIT);
+	return (free(line), 0);
 }
