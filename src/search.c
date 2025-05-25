@@ -17,7 +17,10 @@ int	searcher(t_data *data)
 	char	*line;
 	char	*result;
 
-	line = data->first_line;
+	ft_putstr_fd("\033[0;32mSEARCH:\033[0m\n", 1);
+	line = get_next_line(0, FALSE);
+	if (!line || line[0] == '\n')
+		return (free(line), EXIT);
 	while (line && line[0] != '\n')
 	{
 		line[ft_strlen(line) - 1] = '\0';
@@ -33,10 +36,5 @@ int	searcher(t_data *data)
 		line = get_next_line(0, FALSE);
 	}
 	free(line);
-	ft_putstr_fd("\033[0;32mINPUT:\033[0m\n", 1);
-	line = get_next_line(0, FALSE);
-	if (!line || line[0] == '\n')
-		return (free(line), EXIT);
-	data->first_line = line;
-	return (0);
+	return (EXIT);
 }

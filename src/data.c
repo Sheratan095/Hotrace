@@ -18,7 +18,6 @@ void	init_data(t_data *data)
 
 	data->first_entry = false;
 	data->first_line = NULL;
-	data->mode = INSERTION;
 	i = 0;
 	while (i < MAX_ENTRIES)
 	{
@@ -78,4 +77,5 @@ void	clean_up(t_data *data)
 		}
 		i++;
 	}
+	get_next_line(0, TRUE);
 }
