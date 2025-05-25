@@ -21,7 +21,7 @@ int	main(int argc, char **argv)
 		return (error_print(NO_ARGS, NULL), 1);
 	usage();
 	data = init_data();
-	parser(data);
+	handle_data(data);
 	clean_up(data);
 	return (0);
 }

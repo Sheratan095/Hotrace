@@ -12,7 +12,7 @@
 
 #include "Hotrace.h"
 
-int	parser(t_data *data)
+int	handle_data(t_data *data)
 {
 	int	parsing_code;
 

@@ -101,7 +101,7 @@ void		ft_putstr_fd(char *s, int fd);
 
 //----------------- PARSING ---------------
 
-int			parser(t_data *data);
+int			handle_data(t_data *data);
 int			searcher(t_data *data);
 int			insertion(t_data *data);
 void		error_print(int error, char *keyword);
