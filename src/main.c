@@ -3,21 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maceccar <maceccar@student.42firenze.it>   +#+  +:+       +#+        */
+/*   By: cwannhed <cwannhed@student.42firenze.it>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/24 11:03:40 by maceccar          #+#    #+#             */
-/*   Updated: 2025/05/24 23:10:16 by maceccar         ###   ########.fr       */
+/*   Created: 2025/05/24 11:03:40 by cwannhed          #+#    #+#             */
+/*   Updated: 2025/05/25 11:15:56 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Hotrace.h"
 
-/*
-	1)	Capire cosa passare
-	2)	insert
-	3)	searcher
-	4)	stampa errori
-*/
 int	main(int argc, char **argv)
 {
 	t_data	*data;

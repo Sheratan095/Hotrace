@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Hotrace.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maceccar <maceccar@student.42firenze.it>   +#+  +:+       +#+        */
+/*   By: cwannhed <cwannhed@student.42firenze.it>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/24 11:09:41 by maceccar          #+#    #+#             */
-/*   Updated: 2025/05/24 23:10:16 by maceccar         ###   ########.fr       */
+/*   Created: 2025/05/24 11:09:41 by cwannhed          #+#    #+#             */
+/*   Updated: 2025/05/25 11:15:56 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ typedef struct s_data
 	t_mode	mode;
 	char	*first_line;
 	t_bool	first_entry;
+	t_bool	is_even;
 }	t_data;
 
 //------------------ DATA ----------------

@@ -3,30 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   insertion.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maceccar <maceccar@student.42firenze.it>   +#+  +:+       +#+        */
+/*   By: cwannhed <cwannhed@student.42firenze.it>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/24 14:57:52 by maceccar          #+#    #+#             */
-/*   Updated: 2025/05/24 23:10:16 by maceccar         ###   ########.fr       */
+/*   Created: 2025/05/24 14:57:52 by cwannhed          #+#    #+#             */
+/*   Updated: 2025/05/25 11:15:56 by cwannhed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Hotrace.h"
 
-static void	parse_line(t_data *data, char *line, char *key, t_bool_val *even);
+static void	parse_line(t_data *data, char *line, char *key);
 
 int	insertion(t_data *data)
 {
 	char		*line;
 	char		*key;
-	t_bool_val	even;
 
 	line = data->first_line;
 	key = NULL;
-	even.val = TRUE;
+	data->is_even = TRUE;
 	if (!line)
 		line = get_next_line(0, FALSE);
-	parse_line(data, line, key, &even);
-	if (even.val == FALSE)
+	parse_line(data, line, key);
+	if (data->is_even == FALSE)
 		return (SYNTAX_ERROR);
 	if (!line)
 		return (EXIT);
@@ -38,13 +37,13 @@ int	insertion(t_data *data)
 	return (0);
 }
 
-static void	parse_line(t_data *data, char *line, char *key, t_bool_val *even)
+static void	parse_line(t_data *data, char *line, char *key)
 {
 	while (line && line[0] != '\n')
 	{
-		++((*even).val);
+		data->is_even = !data->is_even;
 		line[ft_strlen(line) - 1] = '\0';
-		if ((*even).val == FALSE)
+		if (data->is_even == FALSE)
 		{
 			free(key);
 			key = line;
