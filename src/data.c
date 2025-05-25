@@ -12,7 +12,7 @@
 
 #include "Hotrace.h"
 
-static t_bool	place_collision(t_data *data, t_entry *entry, int index);
+static t_bool	place(t_data *data, t_entry *entry, int index, int *count);
 
 void	init_data(t_data *data)
 {
@@ -43,19 +43,19 @@ void	add_entry(t_data *data, char *key, char *value, size_t key_len)
 		data->entries[index] = entry;
 	else
 	{
-		if (place_collision(data, entry, index) == TRUE)
+		if (place(data, entry, index, &count) == TRUE)
 		{
-			count++;
+			data->first_entry = true;
 			return ;
 		}
 		free(entry->key);
 		free(entry->value);
 		free(entry);
 	}
-	data->first_entry = true;
+	count++;
 }
 
-static t_bool	place_collision(t_data *data, t_entry *entry, int index)
+static t_bool	place(t_data *data, t_entry *entry, int index, int *count)
 {
 	int	i;
 
@@ -78,6 +78,7 @@ static t_bool	place_collision(t_data *data, t_entry *entry, int index)
 			index = 0;
 	}
 	data->entries[index] = entry;
+	(*count)++;
 	return (TRUE);
 }
 

@@ -28,7 +28,7 @@
 
 # include "get_next_line_bonus.h"
 
-# define MAX_ENTRIES 2
+# define MAX_ENTRIES 240007
 
 enum e_parsing_code
 {
