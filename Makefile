@@ -18,6 +18,9 @@ SRC = src/main.c \
 		src/utils/ft_strlen.c \
 		src/utils/ft_strlcpy.c \
 		src/utils/ft_memcpy.c \
+		src/utils/ft_bzero.c \
+		src/utils/ft_calloc.c \
+		src/utils/ft_memset.c \
 		src/utils/get_next_line_bonus.c \
 		src/ft_hash.c \
 		src/data.c \

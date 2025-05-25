@@ -99,6 +99,13 @@ size_t		ft_strlen(const char *str);
 
 void		ft_putstr_fd(char *s, int fd);
 
+void		*ft_bzero(void *dest, size_t count);
+
+void		*ft_calloc(size_t nitems, size_t size);
+
+void	*	ft_memset(void *dest, int c, size_t count);
+
+
 //----------------- PARSING ---------------
 
 int			handle_data(t_data *data);
