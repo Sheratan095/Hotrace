@@ -44,8 +44,9 @@ clean:
 	@echo "$(RED)[HOTRACE]:\t HOTRACE CLEAN$(RESET)"; \
 
 fclean: clean
-	@rm -f $(NAME)
+	@rm -f $(NAME) giacomo tbeauzam test_result.txt
 	@echo "$(RED)[HOTRACE]:\t HOTRACE FCLEAN$(RESET)"; \
+
 
 re: fclean all
 
@@ -62,7 +63,7 @@ tests: re all
 	done
 
 val: all
-	$(VALGRIND) ./$(NAME)
+	$(VALGRIND) ./$(NAME) $(REDIR)
 
 #COLORS
 
