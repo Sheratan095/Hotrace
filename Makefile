@@ -59,7 +59,7 @@ tests: re all
 	done
 
 val: all
-	$(VALGRIND) ./$(NAME)
+	$(VALGRIND) ./$(NAME) $(REDIR)
 
 #COLORS
 
