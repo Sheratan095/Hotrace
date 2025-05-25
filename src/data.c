@@ -12,7 +12,7 @@
 
 #include "Hotrace.h"
 
-static void	place_collision(t_data *data, t_entry *entry, int index);
+static t_bool	place_collision(t_data *data, t_entry *entry, int index);
 
 void	init_data(t_data *data)
 {
@@ -34,11 +34,7 @@ void	add_entry(t_data *data, char *key, char *value, size_t key_len)
 	int			index;
 
 	if (count >= MAX_ENTRIES)
-	{
-		free(key);
-		free(value);
 		return ;
-	}
 	entry = malloc(sizeof(t_entry));
 	entry->key = key;
 	entry->value = value;
@@ -47,13 +43,19 @@ void	add_entry(t_data *data, char *key, char *value, size_t key_len)
 		data->entries[index] = entry;
 	else
 	{
-		place_collision(data, entry, index);
+		if (place_collision(data, entry, index) == TRUE)
+		{
+			count++;
+			return ;
+		}
+		free(entry->key);
+		free(entry->value);
+		free(entry);
 	}
-	count++;
 	data->first_entry = true;
 }
 
-static void	place_collision(t_data *data, t_entry *entry, int index)
+static t_bool	place_collision(t_data *data, t_entry *entry, int index)
 {
 	int	i;
 
@@ -67,15 +69,16 @@ static void	place_collision(t_data *data, t_entry *entry, int index)
 			data->entries[index]->value = entry->value;
 			data->entries[index]->key = entry->key;
 			free(entry);
-			return ;
+			return (TRUE);
 		}
 		index++;
 		if (i == index)
-			return ;
+			return (FALSE);
 		if (index >= MAX_ENTRIES)
 			index = 0;
 	}
 	data->entries[index] = entry;
+	return (TRUE);
 }
 
 void	clean_up(t_data *data)
