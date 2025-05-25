@@ -57,7 +57,6 @@ typedef struct s_entry
 typedef struct s_data
 {
 	t_entry	*entries[MAX_ENTRIES];
-	char	*first_line;
 	t_bool	first_entry;
 }	t_data;
 
