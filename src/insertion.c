@@ -39,18 +39,23 @@ int	insertion(t_data *data)
 
 static void	parse_line(t_data *data, char *line, char *key)
 {
+	int	line_len;
+	int	key_len;
+
 	while (line && line[0] != '\n')
 	{
 		data->is_even = !data->is_even;
-		line[ft_strlen(line) - 1] = '\0';
+		line_len = ft_strlen(line);
+		line[line_len - 1] = '\0';
 		if (data->is_even == FALSE)
 		{
 			free(key);
 			key = line;
+			key_len = line_len;
 		}
 		else
 		{
-			add_entry(data, key, line);
+			add_entry(data, key, line, key_len, line_len);
 			free(key);
 			key = NULL;
 			free(line);
