@@ -34,7 +34,11 @@ void	add_entry(t_data *data, char *key, char *value, size_t key_len)
 	int			index;
 
 	if (count >= MAX_ENTRIES)
+	{
+		free(key);
+		free(value);
 		return ;
+	}
 	entry = malloc(sizeof(t_entry));
 	entry->key = key;
 	entry->value = value;
