@@ -55,7 +55,7 @@ t_data	*add_entry(t_data *data, char *key, char *value, size_t key_len, size_t v
 			}
 			index++;
 			if (i == index)
-				return(data);
+				break;
 			if (index >= MAX_ENTRIES)
 				index = 0;
 		}

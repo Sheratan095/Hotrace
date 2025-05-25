@@ -36,7 +36,7 @@ char	*hash_lookup(t_data *data, char *key)
 		if (index >= MAX_ENTRIES)
 			index = 0;
 		if (i == index)
-			break;
+			exit(0);
 		found_entry = data->entries[index];
 	}
 	return (NULL);
