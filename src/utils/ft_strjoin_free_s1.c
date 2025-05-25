@@ -17,17 +17,16 @@ char	*ft_strjoin_free_s1(char *s1, char *s2)
 	size_t	i;
 	size_t	j;
 	char	*str;
+	size_t	len_s1;
+	size_t	len_s2;
 
+	len_s1 = ft_strlen(s1);
+	len_s2 = ft_strlen(s2);
 	if (!s1)
-	{
-		s1 = (char *)malloc(1 * sizeof(char));
-		s1[0] = '\0';
-	}
+		s1 = (char *)ft_calloc(1, sizeof(char));
 	if (!s1 || !s2)
 		return (NULL);
-	str = malloc(sizeof(char) * ((ft_strlen(s1) + ft_strlen(s2)) + 1));
-	if (str == NULL)
-		return (NULL);
+	str = ft_calloc((len_s1 + len_s2) + 1, sizeof(char));
 	i = -1;
 	j = 0;
 	if (s1)
@@ -35,7 +34,6 @@ char	*ft_strjoin_free_s1(char *s1, char *s2)
 			str[i] = s1[i];
 	while (s2[j] != '\0')
 		str[i++] = s2[j++];
-	str[ft_strlen(s1) + ft_strlen(s2)] = '\0';
 	free(s1);
 	return (str);
 }

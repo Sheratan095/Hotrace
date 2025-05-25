@@ -35,16 +35,16 @@ t_data	*init_data(void)
 // index = get_index(entry); Calculate the index based on the hashed key
 // entry->next = data->entries[index]; Point to the existing chain
 // data->entries[index] = entry;        Insert at the head of the linked list
-t_data	*add_entry(t_data *data, char *key, char *value)
+t_data	*add_entry(t_data *data, char *key, char *value, size_t key_len, size_t value_len)
 {
 	t_entry		*entry;
 	int			index;
 
 	entry = malloc(sizeof(t_entry));
-	entry->key = malloc(ft_strlen(key) + 1 * sizeof(char));
-	entry->value = malloc(ft_strlen(value) + 1 * sizeof(char));
-	ft_strlcpy(entry->key, key, ft_strlen(key) + 1);
-	ft_strlcpy(entry->value, value, ft_strlen(value) + 1);
+	entry->key = malloc(key_len + 1 * sizeof(char));
+	entry->value = malloc(value_len + 1 * sizeof(char));
+	ft_strlcpy(entry->key, key, key_len + 1);
+	ft_strlcpy(entry->value, value, value_len + 1);
 	index = get_index(entry);
 	if (data->entries[index] == NULL)
 	{

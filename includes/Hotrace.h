@@ -75,7 +75,7 @@ typedef struct s_data
 
 t_data		*init_data(void);
 
-t_data		*add_entry(t_data *data, char *key, char *value);
+t_data		*add_entry(t_data *data, char *key, char *value, size_t key_len, size_t value_len);
 
 int			get_index(t_entry *entry);
 
@@ -98,6 +98,13 @@ char		*ft_strjoin_free_s1(char *s1, char *s2);
 size_t		ft_strlen(const char *str);
 
 void		ft_putstr_fd(char *s, int fd);
+
+void		*ft_bzero(void *dest, size_t count);
+
+void		*ft_calloc(size_t nitems, size_t size);
+
+void		*ft_memset(void *dest, int c, size_t count);
+
 
 //----------------- PARSING ---------------
 

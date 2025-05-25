@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cwannhed <cwannhed@student.42firenze.it>   +#+  +:+       +#+        */
+/*   By: maceccar <maceccar@student.42firenze.it>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/16 18:40:17 by cwannhed          #+#    #+#             */
-/*   Updated: 2025/05/25 11:15:56 by cwannhed         ###   ########.fr       */
+/*   Created: 2024/02/16 18:40:17 by maceccar          #+#    #+#             */
+/*   Updated: 2024/10/17 15:35:45 by maceccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Hotrace.h"
 
-//		AFTER FIRST CHECK ON STR
-// if (c == '\0')
-// 	return ((char *)&str[ft_strlen(str)]);
-char	*ft_strchr(const char *str, int c)
+void	*ft_memset(void *dest, int c, size_t count)
 {
-	int	i;
+	size_t			i;
+	unsigned char	*tmp;
 
+	tmp = dest;
 	i = 0;
-	if (!str)
-		return (NULL);
-	while (str[i] != '\0')
+	while (i < count)
 	{
-		if (str[i] == (char) c)
-			return ((char *)&str[i]);
+		tmp[i] = (unsigned char)c;
 		i++;
 	}
-	return (NULL);
+	return (dest);
 }

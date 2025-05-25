@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cwannhed <cwannhed@student.42firenze.it>   +#+  +:+       +#+        */
+/*   By: maceccar <maceccar@student.42firenze.it>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/16 18:40:17 by cwannhed          #+#    #+#             */
-/*   Updated: 2025/05/25 11:15:56 by cwannhed         ###   ########.fr       */
+/*   Created: 2024/02/16 18:40:17 by maceccar          #+#    #+#             */
+/*   Updated: 2024/10/17 15:35:45 by maceccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Hotrace.h"
 
-//		AFTER FIRST CHECK ON STR
-// if (c == '\0')
-// 	return ((char *)&str[ft_strlen(str)]);
-char	*ft_strchr(const char *str, int c)
+void	*ft_calloc(size_t nitems, size_t size)
 {
-	int	i;
+	void	*tmp;
 
-	i = 0;
-	if (!str)
+	tmp = malloc(nitems * size);
+	if (!tmp)
 		return (NULL);
-	while (str[i] != '\0')
-	{
-		if (str[i] == (char) c)
-			return ((char *)&str[i]);
-		i++;
-	}
-	return (NULL);
+	return (ft_bzero(tmp, nitems * size));
 }
