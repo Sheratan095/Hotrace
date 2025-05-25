@@ -12,14 +12,10 @@
 
 #include "Hotrace.h"
 
-// static void	insert_entry(t_data *data, t_entry *entry);
-
-t_data	*init_data(void)
+void	init_data(t_data *data)
 {
-	t_data	*data;
 	int		i;
 
-	data = malloc(sizeof(t_data));
 	data->first_entry = false;
 	data->first_line = NULL;
 	data->mode = INSERTION;
@@ -29,12 +25,8 @@ t_data	*init_data(void)
 		data->entries[i] = NULL;
 		i++;
 	}
-	return (data);
 }
 
-// index = get_index(entry); Calculate the index based on the hashed key
-// entry->next = data->entries[index]; Point to the existing chain
-// data->entries[index] = entry;        Insert at the head of the linked list
 t_data	*add_entry(t_data *data, char *key, char *value, size_t key_len, size_t value_len)
 {
 	t_entry		*entry;
@@ -84,5 +76,4 @@ void	clean_up(t_data *data)
 		}
 		i++;
 	}
-	free(data);
 }
