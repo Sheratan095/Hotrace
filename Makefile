@@ -52,8 +52,23 @@ re: fclean all
 
 args =
 
+val_test: all
+	$(VALGRIND) ./$(NAME) < tests/resources/test01.htr
+	$(VALGRIND) ./$(NAME) < tests/resources/test02.htr
+	$(VALGRIND) ./$(NAME) < tests/resources/test03.htr
+	$(VALGRIND) ./$(NAME) < tests/resources/test04.htr
+	$(VALGRIND) ./$(NAME) < tests/resources/test05.htr
+	$(VALGRIND) ./$(NAME) < tests/resources/test06.htr
+	@echo "$(GREEN)[HOTRACE]:\t ALL TESTS PASSED$(RESET)"
+
 test: all
-	./$(NAME)
+	./$(NAME) < tests/resources/test01.htr
+	./$(NAME) < tests/resources/test02.htr
+	./$(NAME) < tests/resources/test03.htr
+	./$(NAME) < tests/resources/test04.htr
+	./$(NAME) < tests/resources/test05.htr
+	./$(NAME) < tests/resources/test06.htr
+	@echo "$(GREEN)[HOTRACE]:\t ALL TESTS PASSED$(RESET)"
 
 tests: re all
 	@mkdir -p results

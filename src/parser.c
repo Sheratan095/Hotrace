@@ -16,7 +16,7 @@ int	handle_data(t_data *data)
 {
 	int	parsing_code;
 
-	parsing_code = insertion(data);
+	parsing_code = insertion(data, NULL, NULL);
 	if (parsing_code == MALLOC_ERROR || parsing_code == SYNTAX_ERROR)
 		return (error_print(parsing_code, NULL), parsing_code);
 	parsing_code = searcher(data);

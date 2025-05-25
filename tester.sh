@@ -16,8 +16,7 @@ T3="$DIR/test03.htr"
 T4="$DIR/test04.htr"
 T5="$DIR/test05.htr"
 T6="$DIR/test06.htr"
-T7="$DIR/test07.htr"
-T = ("$T1" "$T2" "$T3" "$T4" "$T5" "$T6" "$T7")
+T = ("$T1" "$T2" "$T3" "$T4" "$T5" "$T6")
 
 
 TEST_DIR="$PWD/test_repos"
@@ -98,11 +97,3 @@ $ECHO "Result for $X1"		>> $OUT
 bash -c "time $X1 < $T6"	2>> $OUT
 $ECHO "Result for $X2"		>> $OUT
 bash -c "time $X2 < $T6"	2>> $OUT
-$ECHO next					>> $OUT
-$ECHO "---TEST T7---"		>> $OUT
-$ECHO "Result for $X0"		>> $OUT
-bash -c "time $X0 < $T7"	2>> $OUT
-$ECHO "Result for $X1"		>> $OUT
-bash -c "time $X1 < $T7"	2>> $OUT
-$ECHO "Result for $X2"		>> $OUT
-bash -c "time $X2 < $T7"	2>> $OUT

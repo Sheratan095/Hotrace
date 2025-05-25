@@ -28,9 +28,7 @@
 
 # include "get_next_line_bonus.h"
 
-// 2^18 entries - good balance between size and performance
-# define MAX_ENTRIES 240009
-// # define MAX_ENTRIES 5
+# define MAX_ENTRIES 240007
 
 enum e_parsing_code
 {
@@ -49,9 +47,9 @@ typedef enum e_bool
 
 typedef struct s_entry
 {
-	u_int32_t		hashed_key;
-	char			*key;
-	char			*value;
+	u_int32_t	hashed_key;
+	char		*key;
+	char		*value;
 }	t_entry;
 
 typedef struct s_data
@@ -64,13 +62,13 @@ typedef struct s_data
 
 void		init_data(t_data *data);
 
-t_data		*add_entry(t_data *data, char *key, char *value, size_t key_len, size_t value_len);
+t_data		*add_entry(t_data *data, char *key, char *value, size_t key_len);
 
 int			get_index(t_entry *entry, size_t key_len);
 
 char		*hash_lookup(t_data *data, char *key);
 
-uint32_t	MurmurHash2( const void *key, int len, uint32_t seed );
+uint32_t	MurmurHash2(const void *key, int len, uint32_t seed);
 
 void		clean_up(t_data *data);
 
@@ -97,9 +95,13 @@ void		*ft_memset(void *dest, int c, size_t count);
 //----------------- PARSING ---------------
 
 int			handle_data(t_data *data);
+
 int			searcher(t_data *data);
-int			insertion(t_data *data);
+
+int			insertion(t_data *data, char *key, char *line);
+
 void		error_print(int error, char *keyword);
+
 void		usage(void);
 
 #endif

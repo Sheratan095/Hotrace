@@ -12,24 +12,24 @@
 
 #include "Hotrace.h"
 
-int	insertion(t_data *data)
+int	insertion(t_data *data, char *key, char *line)
 {
 	size_t	line_len;
-	char	*line;
-	char	*key;
+	size_t	key_len;
 
-	line = NULL;
-	key = NULL;
 	line = get_next_line(0, FALSE);
 	while (line && line[0] != '\n')
 	{
 		line_len = ft_strlen(line);
 		line[line_len - 1] = '\0';
 		if (key == NULL)
+		{
 			key = line;
+			key_len = line_len;
+		}
 		else
 		{
-			add_entry(data, key, line, line_len - 1);
+			add_entry(data, key, line, key_len - 1);
 			key = NULL;
 		}
 		line = get_next_line(0, FALSE);
