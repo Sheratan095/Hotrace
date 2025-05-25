@@ -1,3 +1,4 @@
 ./hotrace
 hotrace
 ./test_repos/*
+.nfs*
