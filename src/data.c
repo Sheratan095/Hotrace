@@ -14,7 +14,7 @@
 
 void	init_data(t_data *data)
 {
-	int		i;
+	int	i;
 
 	data->first_entry = false;
 	i = 0;
@@ -31,7 +31,6 @@ t_data	*add_entry(t_data *data, char *key, char *value, size_t key_len)
 	t_entry		*entry;
 	int			index;
 	int			i;
-	(void)key_len;
 
 	if (count >= MAX_ENTRIES)
 		return (NULL);
@@ -57,7 +56,7 @@ t_data	*add_entry(t_data *data, char *key, char *value, size_t key_len)
 			}
 			index++;
 			if (i == index)
-				break;
+				break ;
 			if (index >= MAX_ENTRIES)
 				index = 0;
 		}
@@ -70,9 +69,9 @@ t_data	*add_entry(t_data *data, char *key, char *value, size_t key_len)
 
 void	clean_up(t_data *data)
 {
-	u_int32_t		i;
-	t_entry	*current;
-	t_entry	*temp;
+	u_int32_t	i;
+	t_entry		*current;
+	t_entry		*temp;
 
 	i = 0;
 	while (i < MAX_ENTRIES)
