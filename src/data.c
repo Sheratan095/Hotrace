@@ -35,8 +35,6 @@ t_data	*add_entry(t_data *data, char *key, char *value, size_t key_len, size_t v
 	entry = malloc(sizeof(t_entry));
 	entry->key = key;
 	entry->value = value;
-	// ft_strlcpy(entry->key, key, key_len + 1);
-	// ft_strlcpy(entry->value, value, value_len + 1);
 	index = get_index(entry, key_len);
 	if (data->entries[index] == NULL)
 		data->entries[index] = entry;
@@ -47,7 +45,9 @@ t_data	*add_entry(t_data *data, char *key, char *value, size_t key_len, size_t v
 			if (data->entries[index]->hashed_key == entry->hashed_key)
 			{
 				free(data->entries[index]->value);
+				free(data->entries[index]->key);
 				data->entries[index]->value = value;
+				data->entries[index]->key = key;
 				free(entry);
 				return (data);
 			}
@@ -55,6 +55,7 @@ t_data	*add_entry(t_data *data, char *key, char *value, size_t key_len, size_t v
 			if (index >= MAX_ENTRIES)
 				index = 0;
 		}
+		data->entries[index] = entry;
 	}
 	data->first_entry = true;
 	return (data);
@@ -62,7 +63,7 @@ t_data	*add_entry(t_data *data, char *key, char *value, size_t key_len, size_t v
 
 void	clean_up(t_data *data)
 {
-	int		i;
+	u_int32_t		i;
 	t_entry	*current;
 	t_entry	*temp;
 
