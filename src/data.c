@@ -52,6 +52,7 @@ void	add_entry(t_data *data, char *key, char *value, size_t key_len)
 		free(entry->value);
 		free(entry);
 	}
+	data->first_entry = true;
 	count++;
 }
 
