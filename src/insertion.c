@@ -39,8 +39,8 @@ int	insertion(t_data *data)
 
 static void	parse_line(t_data *data, char *line, char *key)
 {
-	int	line_len;
-	int	key_len;
+	size_t	line_len;
+	size_t	key_len;
 
 	while (line && line[0] != '\n')
 	{
