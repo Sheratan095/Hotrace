@@ -14,14 +14,14 @@
 
 int	main(int argc, char **argv)
 {
-	t_data	data; // Declare data as an automatic variable instead of a pointer
+	t_data	data;
 
 	(void)argv;
 	if (argc != 1)
 		return (error_print(NO_ARGS, NULL), 1);
 	usage();
-	init_data(&data); // Initialize the data structure directly
-	handle_data(&data); // Pass a pointer to the structure
-	clean_up(&data); // Clean up allocations within the structure
+	init_data(&data);
+	handle_data(&data);
+	clean_up(&data);
 	return (0);
 }
