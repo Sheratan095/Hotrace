@@ -27,12 +27,15 @@ void	init_data(t_data *data)
 
 t_data	*add_entry(t_data *data, char *key, char *value, size_t key_len, size_t value_len)
 {
+	static int count = 0;
 	t_entry		*entry;
 	int			index;
 	(void)key_len;
 	(void)value_len;
 	int i;
 
+	if (count >= MAX_ENTRIES)
+		return (NULL);
 	entry = malloc(sizeof(t_entry));
 	entry->key = key;
 	entry->value = value;
@@ -61,6 +64,7 @@ t_data	*add_entry(t_data *data, char *key, char *value, size_t key_len, size_t v
 		}
 		data->entries[index] = entry;
 	}
+	count++;
 	data->first_entry = true;
 	return (data);
 }
