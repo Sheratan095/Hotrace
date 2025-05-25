@@ -17,7 +17,6 @@ void	init_data(t_data *data)
 	int		i;
 
 	data->first_entry = false;
-	data->first_line = NULL;
 	i = 0;
 	while (i < MAX_ENTRIES)
 	{
