@@ -21,7 +21,7 @@ char	*hash_lookup(t_data *data, char *key)
 	if (!data || !key || data->first_entry == false)
 		return (NULL);
 	target_entry.key = key;
-	index = get_index(&target_entry);
+	index = get_index(&target_entry, ft_strlen(key));
 	found_entry = data->entries[index];
 	if (found_entry == NULL)
 		return (NULL);
@@ -75,9 +75,9 @@ char	*hash_lookup(t_data *data, char *key)
 // }
 
 // prende una entry e la inserisce nell'array entries
-int get_index(t_entry *entry)
+int get_index(t_entry *entry, size_t key_len)
 {
-	entry->hashed_key = MurmurHash2(entry->key, ft_strlen(entry->key), MAX_ENTRIES);
+	entry->hashed_key = MurmurHash2(entry->key, key_len, MAX_ENTRIES);
 	return (entry->hashed_key % MAX_ENTRIES);
 }
 

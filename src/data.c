@@ -37,7 +37,7 @@ t_data	*add_entry(t_data *data, char *key, char *value, size_t key_len, size_t v
 	entry->value = malloc(value_len + 1 * sizeof(char));
 	ft_strlcpy(entry->key, key, key_len + 1);
 	ft_strlcpy(entry->value, value, value_len + 1);
-	index = get_index(entry);
+	index = get_index(entry, key_len);
 	if (data->entries[index] == NULL)
 	{
 		data->entries[index] = entry;
