@@ -38,7 +38,7 @@ enum e_parsing_code
 	MALLOC_ERROR,
 	SYNTAX_ERROR,
 	NOT_FOUND,
-	BAD_ARGC,
+	NO_ARGS,
 	EXIT,
 };
 
@@ -53,11 +53,6 @@ typedef enum e_mode
 	INSERTION,
 	SEARCH,
 }	t_mode;
-
-typedef struct s_bool
-{
-	unsigned int	val:1;
-}	t_bool_val;
 
 typedef struct s_entry
 {
@@ -106,7 +101,7 @@ void		ft_putstr_fd(char *s, int fd);
 
 //----------------- PARSING ---------------
 
-int			parser(t_data *data);
+int			handle_data(t_data *data);
 int			searcher(t_data *data);
 int			insertion(t_data *data);
 void		error_print(int error, char *keyword);
