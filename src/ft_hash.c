@@ -85,9 +85,18 @@ int get_index(t_entry *entry)
 // hash a gruppi di 4 byte, ogni 4 byte viene moltiplicato per un numero 'magico'
 uint32_t MurmurHash2 ( const void * key, int len, uint32_t seed )
 {
+  /* 'm' and 'r' are mixing constants generated offline.
+     They're not really 'magic', they just happen to work well.  */
+
   const uint32_t m = 0x5bd1e995;
   const int r = 24;
+
+  /* Initialize the hash to a 'random' value */
+
   uint32_t h = seed ^ len;
+
+  /* Mix 4 bytes at a time into the hash */
+
   const unsigned char * data = (const unsigned char *)key;
 
   while(len >= 4)
@@ -104,21 +113,32 @@ uint32_t MurmurHash2 ( const void * key, int len, uint32_t seed )
     data += 4;
     len -= 4;
   }
-  if (len == 1)
-  {
-	h ^= data[0];
-	h *= m;
-  }
-  else if (len == 3) h ^= data[2] << 16;
-  else if (len == 2) h ^= data[1] << 8;
 
+  /* Handle the last few bytes of the input array  */
+
+  if (len == 3) {
+      h ^= data[2] << 16;
+      h ^= data[1] << 8;
+      h ^= data[0];
+      h *= m;
+  } else if (len == 2) {
+      h ^= data[1] << 8;
+      h ^= data[0];
+      h *= m;
+  } else if (len == 1) {
+      h ^= data[0];
+      h *= m;
+  }
+
+  /* Do a few final mixes of the hash to ensure the last few
+  // bytes are well-incorporated.  */
 
   h ^= h >> 13;
   h *= m;
   h ^= h >> 15;
 
   return h;
-}
+} 
 
 // implementazione piu performante sui sistemi a 64 bit
 
