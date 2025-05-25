@@ -12,6 +12,9 @@
 
 #include "Hotrace.h"
 
+//		AFTER FIRST CHECK ON STR
+// if (c == '\0')
+// 	return ((char *)&str[ft_strlen(str)]);
 char	*ft_strchr(const char *str, int c)
 {
 	int	i;
@@ -19,8 +22,6 @@ char	*ft_strchr(const char *str, int c)
 	i = 0;
 	if (!str)
 		return (NULL);
-	if (c == '\0')
-		return ((char *)&str[ft_strlen(str)]);
 	while (str[i] != '\0')
 	{
 		if (str[i] == (char) c)
