@@ -12,6 +12,8 @@
 
 #include "Hotrace.h"
 
+static void	place_collision(t_data *data, t_entry *entry, int index);
+
 void	init_data(t_data *data)
 {
 	int	i;
@@ -30,7 +32,6 @@ void	add_entry(t_data *data, char *key, char *value, size_t key_len)
 	static int	count = 0;
 	t_entry		*entry;
 	int			index;
-	int			i;
 
 	if (count >= MAX_ENTRIES)
 		return ;
@@ -38,32 +39,39 @@ void	add_entry(t_data *data, char *key, char *value, size_t key_len)
 	entry->key = key;
 	entry->value = value;
 	index = get_index(entry, key_len);
-	i = index;
 	if (data->entries[index] == NULL)
 		data->entries[index] = entry;
 	else
 	{
-		while (data->entries[index] != NULL)
-		{
-			if (data->entries[index]->hashed_key == entry->hashed_key)
-			{
-				free(data->entries[index]->value);
-				free(data->entries[index]->key);
-				data->entries[index]->value = value;
-				data->entries[index]->key = key;
-				free(entry);
-				return ;
-			}
-			index++;
-			if (i == index)
-				break ;
-			if (index >= MAX_ENTRIES)
-				index = 0;
-		}
-		data->entries[index] = entry;
+		place_collision(data, entry, index);
 	}
 	count++;
 	data->first_entry = true;
+}
+
+static void	place_collision(t_data *data, t_entry *entry, int index)
+{
+	int	i;
+
+	i = index;
+	while (data->entries[index] != NULL)
+	{
+		if (data->entries[index]->hashed_key == entry->hashed_key)
+		{
+			free(data->entries[index]->value);
+			free(data->entries[index]->key);
+			data->entries[index]->value = entry->value;
+			data->entries[index]->key = entry->key;
+			free(entry);
+			return ;
+		}
+		index++;
+		if (i == index)
+			break ;
+		if (index >= MAX_ENTRIES)
+			index = 0;
+	}
+	data->entries[index] = entry;
 }
 
 void	clean_up(t_data *data)
