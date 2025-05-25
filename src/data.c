@@ -25,12 +25,13 @@ void	init_data(t_data *data)
 	}
 }
 
-t_data	*add_entry(t_data *data, char *key, char *value)
+t_data	*add_entry(t_data *data, char *key, char *value, size_t key_len)
 {
 	static int	count = 0;
 	t_entry		*entry;
 	int			index;
 	int			i;
+	(void)key_len;
 
 	if (count >= MAX_ENTRIES)
 		return (NULL);

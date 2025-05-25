@@ -38,7 +38,7 @@ static int	parse_line(t_data *data)
 		}
 		else
 		{
-			add_entry(data, key, line, key_len - 1, line_len - 1);
+			add_entry(data, key, line, key_len - 1);
 			key = NULL;
 		}
 		line = get_next_line(0, FALSE);
