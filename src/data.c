@@ -25,7 +25,7 @@ void	init_data(t_data *data)
 	}
 }
 
-t_data	*add_entry(t_data *data, char *key, char *value, size_t key_len)
+void	add_entry(t_data *data, char *key, char *value, size_t key_len)
 {
 	static int	count = 0;
 	t_entry		*entry;
@@ -33,7 +33,7 @@ t_data	*add_entry(t_data *data, char *key, char *value, size_t key_len)
 	int			i;
 
 	if (count >= MAX_ENTRIES)
-		return (NULL);
+		return ;
 	entry = malloc(sizeof(t_entry));
 	entry->key = key;
 	entry->value = value;
@@ -52,7 +52,7 @@ t_data	*add_entry(t_data *data, char *key, char *value, size_t key_len)
 				data->entries[index]->value = value;
 				data->entries[index]->key = key;
 				free(entry);
-				return (data);
+				return ;
 			}
 			index++;
 			if (i == index)
@@ -64,7 +64,6 @@ t_data	*add_entry(t_data *data, char *key, char *value, size_t key_len)
 	}
 	count++;
 	data->first_entry = true;
-	return (data);
 }
 
 void	clean_up(t_data *data)
