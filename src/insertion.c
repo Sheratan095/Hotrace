@@ -49,16 +49,16 @@ static void	parse_line(t_data *data, char *line, char *key)
 		line[line_len - 1] = '\0';
 		if (data->is_even == FALSE)
 		{
-			free(key);
+			// free(key);
 			key = line;
 			key_len = line_len;
 		}
 		else
 		{
 			add_entry(data, key, line, key_len - 1, line_len - 1);
-			free(key);
+			// free(key);
 			key = NULL;
-			free(line);
+			// free(line);
 		}
 		line = get_next_line(0, FALSE);
 	}

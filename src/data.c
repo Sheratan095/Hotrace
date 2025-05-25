@@ -31,12 +31,14 @@ t_data	*add_entry(t_data *data, char *key, char *value, size_t key_len, size_t v
 {
 	t_entry		*entry;
 	int			index;
+	(void)key_len;
+	(void)value_len;\
 
 	entry = malloc(sizeof(t_entry));
-	entry->key = malloc(key_len + 1 * sizeof(char));
-	entry->value = malloc(value_len + 1 * sizeof(char));
-	ft_strlcpy(entry->key, key, key_len + 1);
-	ft_strlcpy(entry->value, value, value_len + 1);
+	entry->key = key;
+	entry->value = value;
+	// ft_strlcpy(entry->key, key, key_len + 1);
+	// ft_strlcpy(entry->value, value, value_len + 1);
 	index = get_index(entry, key_len);
 	if (data->entries[index] == NULL)
 	{
