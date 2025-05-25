@@ -67,7 +67,7 @@ static void	place_collision(t_data *data, t_entry *entry, int index)
 		}
 		index++;
 		if (i == index)
-			break ;
+			return ;
 		if (index >= MAX_ENTRIES)
 			index = 0;
 	}
