@@ -29,8 +29,8 @@
 # include "get_next_line_bonus.h"
 
 // 2^18 entries - good balance between size and performance
-// # define MAX_ENTRIES 50009
-# define MAX_ENTRIES 2
+# define MAX_ENTRIES 50009
+// # define MAX_ENTRIES 5
 
 enum e_parsing_code
 {

@@ -31,11 +31,13 @@ t_data	*add_entry(t_data *data, char *key, char *value, size_t key_len, size_t v
 	int			index;
 	(void)key_len;
 	(void)value_len;
+	int i;
 
 	entry = malloc(sizeof(t_entry));
 	entry->key = key;
 	entry->value = value;
 	index = get_index(entry, key_len);
+	i = index;
 	if (data->entries[index] == NULL)
 		data->entries[index] = entry;
 	else
@@ -52,6 +54,8 @@ t_data	*add_entry(t_data *data, char *key, char *value, size_t key_len, size_t v
 				return (data);
 			}
 			index++;
+			if (i == index)
+				return(data);
 			if (index >= MAX_ENTRIES)
 				index = 0;
 		}

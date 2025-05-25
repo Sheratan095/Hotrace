@@ -17,13 +17,16 @@ char	*hash_lookup(t_data *data, char *key)
 	t_entry		target_entry;
 	t_entry		*found_entry;
 	int			index;
+	int			i;
 
 	if (!data || !key || data->first_entry == false)
 		return (NULL);
 	target_entry.key = key;
 	index = get_index(&target_entry, ft_strlen(key));
+	i = index;
 	found_entry = data->entries[index];
-	if (found_entry != NULL)
+	if (found_entry != NULL &&
+		 found_entry->hashed_key == target_entry.hashed_key)
 		return (found_entry->value);
 	while (found_entry)
 	{
@@ -32,10 +35,10 @@ char	*hash_lookup(t_data *data, char *key)
 		index++;
 		if (index >= MAX_ENTRIES)
 			index = 0;
+		if (i == index)
+			break;
 		found_entry = data->entries[index];
 	}
-
-
 	return (NULL);
 }
 
