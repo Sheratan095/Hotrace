@@ -54,11 +54,6 @@ typedef enum e_mode
 	SEARCH,
 }	t_mode;
 
-typedef struct s_bool
-{
-	unsigned int	val:1;
-}	t_bool_val;
-
 typedef struct s_entry
 {
 	u_int32_t		hashed_key;
