@@ -29,8 +29,8 @@
 # include "get_next_line_bonus.h"
 
 // 2^18 entries - good balance between size and performance
-# define MAX_ENTRIES 500009
-// # define MAX_ENTRIES 100
+// # define MAX_ENTRIES 50009
+# define MAX_ENTRIES 100
 
 enum e_parsing_code
 {
@@ -59,7 +59,6 @@ typedef struct s_data
 	t_entry	*entries[MAX_ENTRIES];
 	char	*first_line;
 	t_bool	first_entry;
-	t_bool	is_even;
 }	t_data;
 
 //------------------ DATA ----------------

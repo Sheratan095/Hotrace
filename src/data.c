@@ -31,7 +31,7 @@ t_data	*add_entry(t_data *data, char *key, char *value, size_t key_len, size_t v
 	t_entry		*entry;
 	int			index;
 	(void)key_len;
-	(void)value_len;\
+	(void)value_len;
 
 	entry = malloc(sizeof(t_entry));
 	entry->key = key;

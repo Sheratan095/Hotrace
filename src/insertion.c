@@ -12,38 +12,28 @@
 
 #include "Hotrace.h"
 
-static int	parse_line(t_data *data, char *line, char *key);
+static int	parse_line(t_data *data);
 
 int	insertion(t_data *data)
 {
-	char		*line;
-	char		*key;
-
-	key = NULL;
-	line = NULL;
-	data->is_even = TRUE;
-	if (parse_line(data, line, key) == EXIT)
-		return (EXIT);
-	if (data->is_even == FALSE)
-		return (SYNTAX_ERROR);
-	return (EXIT);
+	return (parse_line(data));
 }
 
-static int	parse_line(t_data *data, char *line, char *key)
+static int	parse_line(t_data *data)
 {
 	size_t	line_len;
 	size_t	key_len;
+	char	*line = NULL;
+	char	*key = NULL;
 
 	line = get_next_line(0, FALSE);
 	while (line && line[0] != '\n')
 	{
-		data->is_even = !data->is_even;
 		line_len = ft_strlen(line);
 		line[line_len - 1] = '\0';
-		if (data->is_even == FALSE)
+		if (key == NULL)
 		{
 			key = line;
-			//free(line);
 			key_len = line_len;
 		}
 		else
@@ -53,8 +43,9 @@ static int	parse_line(t_data *data, char *line, char *key)
 		}
 		line = get_next_line(0, FALSE);
 	}
-	free(key);
-	if (!line)
-		return (EXIT);
-	return (free(line), 0);
+	if (line[0] == '\n')
+		free(line);
+	if (key)
+		return (free(key), SYNTAX_ERROR);
+	return (EXIT);
 }
