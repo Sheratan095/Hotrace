@@ -24,9 +24,10 @@ void	error_print(int error, char *keyword)
 		write(2, keyword, ft_strlen(keyword));
 		write(2, ": Not found.\n", 13);
 	}
-	else if (error == BAD_ARGC)
+	else if (error == NO_ARGS)
 	{
-		write(2, "Please give no args.\n", 21);
+		write(2, "This program doesn't take any arguments.\n", 42);
+		write(2, "Example: ./hotrace\n", 20);
 	}
 	write(2, "\033[0m", 4);
 }

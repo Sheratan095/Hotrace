@@ -38,7 +38,7 @@ enum e_parsing_code
 	MALLOC_ERROR,
 	SYNTAX_ERROR,
 	NOT_FOUND,
-	BAD_ARGC,
+	NO_ARGS,
 	EXIT,
 };
 
